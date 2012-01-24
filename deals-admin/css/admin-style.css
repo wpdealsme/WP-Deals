@@ -1,0 +1,250 @@
+/*-------------------------------------------------------------------------------------------*/
+/* OptionsFramework Admin Styles */
+/*-------------------------------------------------------------------------------------------*/
+
+.updated {
+	max-width:764px;
+	margin-bottom:0px !important;
+}
+#dealsframework {
+	position:relative;
+	z-index: 0;
+/*	max-width:780px;*/
+	background:#fff;
+}
+#dealsframework p {
+	margin-bottom:0;
+	padding-bottom:10px;
+        clear: both;
+        margin-left: 21px;
+        color: #777;
+}
+#dealsframework .section {
+	padding:10px 10px 0;
+        clear: both;
+        display: block;
+        overflow: hidden;
+}
+#dealsframework .group {
+	padding-bottom:40px;
+}
+#dealsframework .section .heading {
+/*	padding:10px 0px;*/
+	margin:10px;
+/*	border-bottom: 1px solid #dfdfdf;*/
+        display: inline;
+        float: left;
+        font-weight: normal;
+        color: black;
+}
+#dealsframework .section .option {
+        float: right;
+        width: 75%;
+        margin-top: 10px;
+}
+#dealsframework .section .controls {
+	float: left;
+	min-width:350px;
+	width: 54%;
+	padding-right:2%;
+}
+#dealsframework .section .explain {
+	max-width:38%;
+/*	float: left;*/
+	font-size: 12px;
+	line-height:16px;
+	color: #777;
+}
+#dealsframework .section-checkbox .controls {
+	width: 98%;
+}
+#dealsframework .section-checkbox .explain {
+	max-width:94%;
+}
+#dealsframework .section-color .controls {
+	min-width:125px;
+	width:125px
+}
+#dealsframework .controls input, #dealsframework .controls select, #dealsframework .controls textarea {
+	margin-bottom:10px;
+	width:100%;
+}
+#dealsframework .section-radio label, #dealsframework .section-multicheck label {
+	float:left;
+	max-width:90%;
+	line-height: 16px;
+	margin-bottom: 5px;
+}
+#dealsframework .section-section .heading {
+        font-weight: bold;
+        font-size: 16px;
+}
+#dealsframework input.checkbox, #dealsframework input.deals-radio {
+	width: 30px;
+	float:left;
+	clear:both;
+}
+#dealsframework .controls .deals-color {
+	float:left;
+	width: 80px;
+	margin-left:5px;
+	margin-right:5px;
+}
+#dealsframework .controls .deals-typography-size {
+	width:80px;
+	margin-left:5px;
+	float:left
+}
+#dealsframework .controls .deals-typography-unit {
+	width:50px;
+	margin-left:5px;
+	float:left
+}
+#dealsframework .controls .deals-typography-face {
+	width:100px;
+	margin-left:5px;
+	float:left
+}
+#dealsframework .controls .deals-typography-style {
+	width:80px;
+	margin-left:5px;
+	margin-right:5px;
+	float:left
+}
+#dealsframework .deals-background-properties {
+	clear:both;
+	margin-top: 18px;	
+}
+#dealsframework .controls .deals-background-repeat {
+	width:125px;
+	margin-right:5px;
+	float:left
+}
+#dealsframework .controls .deals-background-position {
+	width:125px;
+	margin-right:5px;
+	float:left
+}
+#dealsframework .controls .deals-background-attachment {
+	width:125px;
+	margin-right:5px;
+	float:left
+}
+#dealsframework div.section-background .controls input.upload {
+	width:47%;
+}
+#dealsframework .controls .deals-radio-img-img {
+	border:3px solid #f9f9f9;
+	margin:0 5px 10px 0;
+	display:none;
+	cursor:pointer;
+	float:left;
+}
+#dealsframework .controls .deals-radio-img-selected {
+	border:3px solid #ccc
+}
+#dealsframework .controls .deals-radio-img-img:hover {
+	opacity:.8;
+}
+#dealsframework .controls .deals-border-width {
+	width:80px;
+	float:left
+}
+#dealsframework .controls .deals-border-style {
+	width:120px;
+	float:left
+}
+#dealsframework .hide {
+	display:none;
+}
+#dealsframework .deals-option-image {
+	max-width:340px;
+	margin:3px 0 18px 0;
+}
+#dealsframework .section-size .controls {
+	width: 74%;
+        color: #777;
+}
+#dealsframework .section-size .controls input {
+	width: 80px;
+        margin-right: 15px;
+}
+#dealsframework .mini .controls select, #dealsframework .section .mini .controls {
+	width: 140px;
+}
+#dealsframework .mini .controls input, #dealsframework .mini .controls {
+	min-width:140px;
+	width: 170px;
+}
+#dealsframework .mini .explain {
+	max-width:90%;
+        margin-left: 10px;
+}
+/* Image Uploader */
+
+#dealsframework .controls input.upload {
+	width:80%;
+}
+#dealsframework .controls input.upload_button {
+	float:right;
+	width:45px;
+	border-color:#BBBBBB;
+	cursor:pointer;
+	height:16px;
+}
+#dealsframework .controls input.upload_button:hover {
+	border-color:#666666;
+	color:#000;
+}
+#dealsframework .screenshot {
+	float:left;
+	margin-left:1px;
+	position:relative;
+	width:344px;
+	margin-top:3px;
+}
+#dealsframework .screenshot img {
+	background:#FAFAFA;
+	border-color:#ccc #eee #eee #ccc;
+	border-style:solid;
+	border-width:1px;
+	float:left;
+	max-width:334px;
+	padding:4px;
+	margin-bottom:10px;
+}
+#dealsframework .screenshot .mlu_remove {
+	background:url("../images/ico-delete.png") no-repeat;
+	border:medium none;
+	bottom:4px;
+	display:block;
+	float:left;
+	height:16px;
+	padding:0;
+	position:absolute;
+	left:-4px;
+	text-indent:-9999px;
+	width:16px;
+}
+#dealsframework .screenshot .no_image .file_link {
+	margin-left: 20px;
+}
+#dealsframework .screenshot .no_image .mlu_remove {
+	bottom: 0px;
+}
+#dealsframework .reset-button {
+/*	float:left;*/
+	cursor:pointer;
+}
+
+/* Bottom Section */
+
+#dealsframework-submit {
+	padding: 7px 10px;
+	border-top: 1px solid #ECECEC;
+/*	background-color: #F1F1F1;*/
+        background-image: -moz-linear-gradient(center top , #F9F9F9, #ECECEC);
+}
+#dealsframework .button-primary {
+/*	float:right;*/
+}
