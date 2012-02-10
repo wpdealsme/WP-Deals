@@ -74,7 +74,7 @@ class Deals_Random_Widget extends WP_Widget {
 			'post_status'       => 'publish',
                         'post_type'         => 'daily-deals',
                         'orderby'           => 'rand meta_value',
-                        'meta_key'          => 'is_expired',
+                        'meta_key'          => '_is_expired',
                         'meta_value'        => 'no',
 		);
 		$randoms = new WP_Query( $randoms_args );

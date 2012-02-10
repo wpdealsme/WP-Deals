@@ -4,44 +4,78 @@
   Plugin Name: WP Deals
   Plugin URI: http://wpdeals.me/
   Description: WP Deals is a special-for-deals plugin where you can make, post, and share deals all around the people just by downloading this plugin and make your own deals-site with it. WP Deals is one of Tokokoo’s network, so after downloading the plugin, then you can explore your site with the nice and gorgeous themes from WP Deals themes.
-  Version: 1.0
+  Version: 1.1
   Author: WP Deals
   Author URI: http://wpdeals.me/
  */
+ini_set('display_errors','On');
 
-//default functions
+define('DEALS_VERSION', '1.1');
+
+// defining here
+define('DEALS_PLUGIN_PATH',     plugin_dir_path(__FILE__));
+define('DEALS_PLUGIN_URL',      plugins_url(plugin_basename(dirname(__FILE__))));
+define('DEALS_PLUGIN_FILE',     DEALS_PLUGIN_PATH   . 'deals.php');
+define('DEALS_ADMIN_URL',       DEALS_PLUGIN_URL    . '/deals-admin/');
+define('DEALS_ADMIN_DIR',       DEALS_PLUGIN_PATH   . '/deals-admin/');
+define('DEALS_CLASSES',         DEALS_PLUGIN_PATH   . '/deals-classes/');
+define('DEALS_ASSETS',          DEALS_PLUGIN_URL    . '/deals-assets/');
+define('DEALS_ASSETS_PATH',     DEALS_PLUGIN_PATH   . '/deals-assets/');
+define('DEALS_JS',              DEALS_ASSETS        . 'js/');
+define('DEALS_CSS',             DEALS_ASSETS        . 'css/');
+define('DEALS_IMG',             DEALS_ASSETS        . 'images/');
+define('DEALS_TEMPLATE_DIR',    DEALS_PLUGIN_PATH   . 'deals-template/');
+define('DEALS_TEMPLATE_URL',    DEALS_PLUGIN_URL    . 'deals-template/');
+define('DEALS_FORM_DIR',        DEALS_TEMPLATE_DIR  . 'form/');
+define('DEALS_PAYMENT_DIR',     DEALS_PLUGIN_PATH   . 'deals-payments/');
+define('DEALS_LOG_DIR',         DEALS_PLUGIN_PATH   . 'deals-assets/logs/');
+define('DEALS_VENDOR_DIR',      DEALS_PLUGIN_PATH   . 'deals-assets/vendors/');
+define('DEALS_LIB_DIR',         DEALS_PLUGIN_PATH   . 'deals-assets/libs/');
+define('DEALS_ENABLE_LOG',      true);
+
+// load class
+require_once DEALS_LIB_DIR.'class.deals.error.php';
+
+global $deals_error;
+$deals_error    = new Deals_Error();
+
 require_once 'deals_functions.php';
+require_once 'deals-admin/admin-functions.php';
 
-//load vendor process
-require_once 'deals_vendors.php';
+// load file
+if(is_admin()):    
+    require_once 'deals-admin/admin-init.php';
+else:
+    require_once 'deals_templates.php';
+    require_once 'deals_templates_actions.php';
+    require_once 'deals_templates_functions.php';
+    require_once 'deals-shortcodes/shortcode-init.php';    
+endif;
 
-//load init plugin
 require_once 'deals_init.php';
-
-//load admin page
-require_once 'deals_admin.php';
-
-//register custom (taxonomy+post_type)
-require_once 'deals_register.php';
-
-//custom action > metabbox
-require_once 'deals_custom.php';
-
-//templates
-require_once 'deals_templates_actions.php';
-require_once 'deals_templates_functions.php';
-require_once 'deals-shortcodes/shortcode-init.php';
-
-//widgets
+require_once 'deals-payments/class-payments.php';
 require_once 'deals-widgets/widgets-init.php';
+
+
+
+/**
+ * Output generator to aid debugging
+ **/
+add_action('wp_head', 'deals_generator');
+
+function deals_generator() {
+	echo "\n\n" . '<!-- WP Deals Version -->' . "\n" . '<meta name="generator" content="WP Deals ' . DEALS_VERSION . '" />' . "\n\n";
+}
+
 
 /**
  * Wp-deals conditionals
- * */
+ **/
 function is_wp_deals() {
     // Returns true if on a page which uses WP-deals templates (cart and checkout are standard pages with shortcodes and thus are not included)
-    if (is_deals_page() || is_deal_category() || is_deal_tag() || is_deal())
-        return true; else
+    if (is_deals_page() || is_deal_category() || is_deal_tag() || is_deal() || is_thanks() || is_history() || is_account_deal() || is_feature_deal())
+        return true; 
+    else
         return false;
 }
 
@@ -49,7 +83,8 @@ if (!function_exists('is_deals_page')) {
 
     function is_deals_page() {
         if (is_post_type_archive('daily-deals') || is_page(get_option('deals_page_post_id')))
-            return true; else
+            return true; 
+        else
             return false;
     }
 
@@ -85,8 +120,9 @@ if (!function_exists('is_thanks')) {
 if (!function_exists('is_history')) {
 
     function is_history() {
-        if (is_page(get_option('deals_page_history_id')) || is_page(get_option('deals_page_thanks_post_id')))
-            return true; else
+        if (is_page(get_option('deals_page_history_id')) )
+            return true; 
+        else
             return false;
     }
 
@@ -95,12 +131,22 @@ if (!function_exists('is_account_deal')) {
 
     function is_account_deal() {
         if (is_page(get_option('deals_page_profile_id')))
-            return true; else
+            return true; 
+        else
             return false;
     }
 
 }
+if (!function_exists('is_feature_deal')) {
 
+    function is_feature_deal() {
+        if (is_page(get_option('deals_page_featured_id')))
+            return true; 
+        else
+            return false;
+    }
+
+}
 
 
 /**
@@ -202,4 +248,5 @@ function deals_final_flush_rules() {
     flush_rewrite_rules();
 }
 register_activation_hook(__FILE__,'deals_final_flush_rules');
+register_activation_hook(__FILE__,'activate_deals');
 register_deactivation_hook(__FILE__,'deals_final_flush_rules');

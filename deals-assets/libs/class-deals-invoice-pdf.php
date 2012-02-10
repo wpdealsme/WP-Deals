@@ -25,7 +25,7 @@ class Deals_Invoice_Pdf extends FPDF {
             extract($this->_invoice_vars);
         }
         
-        $filepath = DEALS_PLUGIN_PATH.'deals-assets/invoices/'.$filename.'-'.$checkVerify->transaction_id.'.pdf';        
+        $filepath = DEALS_ASSETS.'invoices/'.$filename.'-'.$checkVerify->transaction_id.'.pdf';        
         $buy_date_raw = date_create($checkVerify->buy_date);
 		$buy_date = date_format($buy_date_raw, 'M d, y');
         

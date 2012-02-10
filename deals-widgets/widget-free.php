@@ -76,18 +76,18 @@ class Deals_Free_Widget extends WP_Widget {
                         'post_type'         => 'daily-deals',
                         'meta_query' => array(
                                 array(
-                                        'key'       => 'is_expired',
+                                        'key'       => '_is_expired',
                                         'value'     => 'no',
                                         'compare'   => '='
                                 ),
                                 array(
-                                        'key'       => 'discount_price',
+                                        'key'       => '_discount_price',
                                         'value'     => 0,
                                         'type'      => 'numeric',
                                         'compare'   => '='
                                 ),
                                 array(
-                                        'key'       => 'base_price',
+                                        'key'       => '_base_price',
                                         'value'     => 0,
                                         'type'      => 'numeric',
                                         'compare'   => '='
@@ -117,7 +117,7 @@ class Deals_Free_Widget extends WP_Widget {
 
                                 <div class="free-deal-title">
                                         <?php the_title(); ?>
-                                        <?php echo get_post_meta(get_the_ID(), 'discount_price', true); ?>
+                                        <?php echo get_post_meta(get_the_ID(), '_discount_price', true); ?>
                                 </div>
                             </a>
 			</li>

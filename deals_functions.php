@@ -1,21 +1,7 @@
 <?php
 
-// defining here
-define('DEALS_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('DEALS_PLUGIN_FILE', DEALS_PLUGIN_PATH.'deals.php');
-define('DEALS_JS', plugins_url('wp-deals/deals-assets/js/'));
-define('DEALS_CSS', plugins_url('wp-deals/deals-assets/css/'));
-define('DEALS_IMG', plugins_url('wp-deals/deals-assets/images/'));
-define('DEALS_DIR', plugins_url('wp-deals/'));
-define('DEALS_URL', ABSPATH . 'wp-content/plugins/wp-deals/');
-define('DEALS_TEMPLATE_DIR', DEALS_URL.'deals-template/');
-define('DEALS_TEMPLATE_URL', DEALS_DIR.'deals-template/');
-define('DEALS_FORM_DIR', DEALS_TEMPLATE_DIR.'form/');
-define('DEALS_PAYMENT_DIR',DEALS_PLUGIN_PATH.'deals-payments/');
-define('DEALS_LOG_DIR',DEALS_PLUGIN_PATH.'deals-assets/logs/');
-define('DEALS_VENDOR_DIR',DEALS_PLUGIN_PATH.'deals-assets/vendors/');
-define('DEALS_LIB_DIR',DEALS_PLUGIN_PATH.'deals-assets/libs/');
-define('DEALS_ENABLE_LOG',false);
+// check if theme has create WP Deals page manually.
+if(!defined('DEALS_TEMPLATE')) define('DEALS_TEMPLATE', 'wpdeals/');
 
 /*
  * define execution php file
@@ -91,30 +77,6 @@ function deals_log($message,$filename='deals-log') {
     
 }
 
-		
-/**
- * Get the plugin path
- */
-function deals_plugin_path() { 	
-        return WP_PLUGIN_DIR . "/" . plugin_basename( dirname(dirname(__FILE__))); 
- }
- 
- 
-/**
- * Get template part (for templates like loop)
- */
-function deals_get_template_part( $slug, $name = '' ) {
-	if ($name == 'deals') :
-		if (!locate_template(array( 'loop-deals.php', DEALS_TEMPLATE_DIR.'loop-deals.php' ))) :
-			load_template( DEALS_TEMPLATE_DIR . 'loop-deals.php',false );
-			return;
-		endif;
-	elseif($name == ''):
-            include_once DEALS_TEMPLATE_DIR . $slug.'.php';
-        else:
-            include_once DEALS_TEMPLATE_DIR . $slug.'-'. $name.'.php';
-        endif;
-}
 
 /**
  * Set include path
@@ -122,8 +84,8 @@ function deals_get_template_part( $slug, $name = '' ) {
  * @param string $vendor_path
  * @return void
  */
-function deals_install_vendors($vendor_path) {    
-    set_include_path(get_include_path().PATH_SEPARATOR.DEALS_VENDOR_DIR.$vendor_path);    
+function deals_install_path($path) {    
+    set_include_path(get_include_path().PATH_SEPARATOR.$path);    
 }
 
 /**
@@ -134,9 +96,9 @@ function deals_install_vendors($vendor_path) {
  * @param string $barcode_name
  * @return void
  */
-function deals_image_create_barcode($barcode_data,$barcode_name) {
+function deals_image_create_barcode($barcode_data, $barcode_name) {
     
-    $img_barcode_path = DEALS_PLUGIN_PATH.'deals-assets/images/barcodes/';
+    $img_barcode_path = DEALS_IMG.'barcodes/';
     
     if( is_writable($img_barcode_path) ) {
         
@@ -163,22 +125,8 @@ function deals_image_create_barcode($barcode_data,$barcode_name) {
  * @param string $default [optional]
  * @return string|int|null|bool|object|array
  */
-function deals_get_option($name,$default=null) {
-    
-    $options = get_option('dealoptions');
-    if(!empty($options)) {
-        
-        if(isset($options[$name]) && !empty($options[$name])) {            
-            return $options[$name];            
-        }else{
-            return $default;
-        }
-        
-    }else{//create file log if all option is empty
-        $log_message = 'Unable to load settings, all option is empty.';
-        deals_log($log_message);
-    }
-    
+function deals_get_option($name, $default = false) {
+        return get_option('deals_'.$name, $default);    
 }
 
 
@@ -240,10 +188,8 @@ if (!function_exists('deals_image')) {
             // get thumb id
             $thumb_id       = get_post_meta($id,'_thumbnail_id',true); 
             $image          = vt_resize( $thumb_id, $src, $width, $height, $crop );
-            
-            // for default images
-            $img_url_default= DEALS_IMG.'default-deals.jpg';
-            $img_url        = ($image['url'] != '')? $image['url']:apply_filters('deals_default_image', $img_url_default);
+                        
+            $img_url        = $image['url'];
             $image_width    = ($image['width'] != '')? $image['width']:$width;
             $image_height   = ($image['height'] != '')? $image['height']:$height;
             
@@ -488,15 +434,13 @@ function deals_remove_sticky($postid){
  */
 function deals_rewrite_buy($wp_rewrite) {                        
 
-    $page_id = get_option('deals_page_post_id');
-
     if($page_id) {
 
         $deal_id_key = '%wpdealsid%';                          
         $wp_rewrite->add_rewrite_tag($deal_id_key, '(.+?)', 'deal_buy_id=');
 
         $custom_rules = array(
-            'daily-deals/buy/(.+)' => 'index.php?page_id='.$page_id.'&deal_buy_id='.$wp_rewrite->preg_index(1)
+            'daily-deals/buy/(.+)' => 'index.php?deal_buy_id='.$wp_rewrite->preg_index(1)
         );
 
         $wp_rewrite->rules = $custom_rules + $wp_rewrite->rules;
@@ -518,13 +462,12 @@ function deals_get_buy_url($id) {
     
     global $wp_rewrite;
     
-    $page_id = get_option('deals_page_post_id');
     $id = intval($id);
     
     if($wp_rewrite->using_permalinks()) {        
         return home_url('/daily-deals/buy/'.$id);        
     }else{
-        return home_url('/index.php?page_id='.$page_id.'&deal_buy_id='.$id);
+        return home_url('/index.php?deal_buy_id='.$id);
     }
     
 }
@@ -567,7 +510,7 @@ function deals_ajax_callback(){
         
         $post_ID = intval($_POST['data']); // Acts as the name  
         
-        update_post_meta($post_ID, 'is_expired', 'yes');
+        update_post_meta($post_ID, '_is_expired', 'yes');
         deals_remove_sticky($post_ID);
         
     }
@@ -593,15 +536,15 @@ function deals_is_expired($postid = null){
     if($postid == null)
         $postid     = $post->ID;
     
-    $is_expired     = (get_post_meta($postid, 'is_expired', true) == 'yes')? 1:0;
+    $is_expired     = (get_post_meta($postid, '_is_expired', true) == 'yes')? 1:0;
     
     if($is_expired == 1){
-        update_post_meta($postid, 'is_expired', 'yes', 'no'); // update key value, set 'yes' expired.
+        update_post_meta($postid, '_is_expired', 'yes', 'no'); // update key value, set 'yes' expired.
         return 1;
     }
     
     // check expired from date deal meta
-    $date_end       = get_post_meta($postid, 'end_time', true); // e.g. "2011-11-29 11:29:00 "
+    $date_end       = get_post_meta($postid, '_end_time', true); // e.g. "2011-11-29 11:29:00 "
     
     // set timezone.
     $timezone       = 'Asia/Jakarta'; // set the location get from http://www.php.net/manual/en/timezones.php
@@ -613,7 +556,7 @@ function deals_is_expired($postid = null){
     $deal_date      = $deal_end - $deal_now;    
     
     if($deal_date <= 0){        
-        update_post_meta($postid, 'is_expired', 'yes', 'no'); // update key value, set 'yes' expired.
+        update_post_meta($postid, '_is_expired', 'yes', 'no'); // update key value, set 'yes' expired.
         deals_remove_sticky($postid);
         return 1;
     }
@@ -628,10 +571,13 @@ function deals_is_expired($postid = null){
  * @global object $post
  * @return string deals_price_format
  */
-function deals_price($currency = true){
+function deals_price($currency = true, $post_id = null){
     global $post;
     
-    $base_price     = (get_post_meta($post->ID, 'base_price', true)) ? get_post_meta($post->ID, 'base_price', true) : 0;
+    if($post_id == null)
+        $post_id = $post->ID;
+    
+    $base_price     = (get_post_meta($post_id, '_base_price', true)) ? get_post_meta($post_id, '_base_price', true) : 0;
     
     if (!$currency)
         return $base_price;
@@ -645,9 +591,13 @@ function deals_price($currency = true){
  * @global object $post
  * @return int 
  */
-function deals_discount($currency = true){
+function deals_discount($currency = true, $post_id = null){
     global $post;
-    $disc_price     = (get_post_meta($post->ID, 'discount_price', true))? get_post_meta($post->ID, 'discount_price', true) : 0;
+    
+    if($post_id == null)
+        $post_id = $post->ID;
+    
+    $disc_price     = (get_post_meta($post_id, '_discount_price', true))? get_post_meta($post_id, '_discount_price', true) : 0;
     
     if(!$currency)
         return $disc_price;
@@ -699,11 +649,14 @@ function deals_is_free(){
  * @global object $post
  * @return string 
  */
-function deals_product_free(){
-    global $post;
+function deals_product_free($post_id = null){
+    global $post;    
+    
+    if($post_id == null)
+        $post_id = $post->ID;
     
     if (is_user_logged_in()) {
-        $hreffree = get_post_meta($post->ID, 'product_link', true);
+        $hreffree = get_post_meta($post_id, '_product_link', true);
     } else {
         $hreffree = '#subscribe_deals';
     }
@@ -719,103 +672,10 @@ function deals_product_free(){
  */
 function deals_get_end_date($postid){
     
-    $deals_end_raw  = get_post_meta($postid, 'end_time', true); // e.g. "2011-11-29 11:29:00 "
+    $deals_end_raw  = get_post_meta($postid, '_end_time', true); // e.g. "2011-11-29 11:29:00 "
     $deals_end_arr  = str_replace(array('-', ' ', ':'), '-', $deals_end_raw); // e.g. "11-29-2011-11-29-"
     
     return explode('-', $deals_end_arr);
-}
-
-
-/**
- * get deals button
- * 
- * 'container_open'    => '<div id="price-block">',
- * 'container_close'   => '</div>',
- * 'expired_open'      => '<span class="expired-button">',
- * 'expired_close'     => '</span>',
- * 'free_open'         => null,
- * 'free_close'        => null,
- * 'link_free_class'   => 'buy-button free',
- * 'link_buy_class'    => 'buy-button',
- * 'text_buy'          => 'Buy now',
- * 'text_free'         => 'Free Download',
- * 'text_expired'      => 'Deal expired',
- *
- * @global object $post
- * @return void
- */
-if(!function_exists('deals_button')){
-    function deals_button( $args = array() ){
-        global $post;
-        
-        /* Set up the default arguments for the button. */
-	$defaults = array(
-        'container_open'    => '<div id="price-block">',
-        'container_close'   => '</div>',
-        'expired_open'      => '<span class="expired-button">',
-        'expired_close'     => '</span>',
-        'free_open'         => null,
-        'free_close'        => null,
-        'buy_open'          => null,
-        'buy_close'         => null,
-        'link_free_class'   => 'buy-button free',
-        'link_buy_class'    => 'buy-button',
-        'text_buy'          => 'Buy now',
-        'text_free'         => 'Free Download',
-        'text_expired'      => 'Deal expired',
-        'show_text_buy'     => true
-	);
-                
-	/* Parse the arguments and extract them for easy variable naming. */
-        $args   = wp_parse_args( $args, $defaults );
-	$args   = apply_filters( 'deals_button_args', $args );
-	$args   = (object) $args;
-        
-        $output = '';
-        
-        if($args->container_open)
-            $output = $args->container_open;
-
-         if (deals_is_expired() == 1) :
-             
-             $output .= $args->expired_open;
-             $output .= '<span class="buy-label">'.$args->text_expired.'</span>';
-             $output .= $args->expired_close;
-             
-         else: 
-                 
-             if ( deals_is_free() ) :
-                
-                $link   = (is_deal())? '#subscribe_deals':get_permalink($post->ID);
-                    
-                $output .= $args->free_open;
-                $output .= '<a href="'.$link.'" class="'.$args->link_free_class.'">'.$args->text_free.'</a>';
-                $output .= $args->free_close;
-                                
-            else: 
-                
-                $link   = (is_deal())? wp_nonce_url(deals_get_buy_url($post->ID), 'buy-button'):get_permalink($post->ID);
-            
-                $output .= $args->buy_open;
-                $output .= '<a href="'.$link.'" class="'.$args->link_buy_class.'">';
-                
-                if($args->show_text_buy)
-                    $output .= '<span class="buy-label">'.$args->text_buy.'</span> ';
-                
-                $output .= '<span class="price-label">'.deals_discount().'</span>';
-                $output .= '</a>';
-                $output .= $args->buy_close;
-                
-            endif; 
-            
-        endif;
-        
-        if($args->container_close)
-            $output .= $args->container_close;
-        
-        echo $output;
-        
-    }
 }
 
 
@@ -832,110 +692,22 @@ function deals_is_featured_exists() {
  * this function will get standart feature
  *
  * @param int $limit [optional]
+ * @param string $order [ASC, DESC, or Rand]
  * @return object
  */
 function deals_featured($limit = 1){
     $sticky = get_option( 'sticky_deals' );
+    $order  = (deals_get_option('featured_rand', 'no') == 'no')? 'date': 'rand';
     $args   = array(
             'post__in'      => $sticky,
             'posts_per_page'=> $limit,
             'post_type'     => 'daily-deals',
             'orderby'       => 'meta_value',
-            'meta_key'      => 'is_expired',
+            'meta_key'      => '_is_expired',
             'meta_value'    => 'no',
-            'order'         => 'ASC',
+            'orderby'       => $order,
             'paged'         => 1);
     return query_posts( $args );
-}
-
-/**
- * Display form subscribe
- *
- * @global object $post
- * @param int $idForm [optional]
- * @return void
- */
-function deals_form_subscribe($idForm = null, $text='Download'){
-    global $post;    
-?>    
-    <script type="text/javascript">
-        jQuery(document).ready(function() {
-
-                jQuery("#<?php echo $idForm; ?>").submit(function(e) {
-                        
-                        e.stopImmediatePropagation();                        
-                        jQuery(this).unbind('submit');
-                        jQuery('input[type=submit]', this).attr('disabled', 'disabled');
-                        
-                        var formParam = jQuery(this).serializeArray();
-                        var postID      = null;
-                        var emailUser   = null;
-                        var wpNonce     = null;
-                        var formCheckId = '<?php echo $idForm; ?>';
-                        var formHidden = null;                        
-                        
-                        jQuery.each( formParam, function(k, v){
-                            
-                            if(v.name == 'email') {
-                                emailUser = v.value;                                
-                            }
-                            
-                            if(v.name == 'id') {
-                                postID = v.value;
-                            }
-                            
-                            if(v.name == 'idForm') {
-                                formHidden = v.value;
-                            }
-                            
-                            if(v.name == '_wpnonce') {
-                                wpNonce = v.value;                                
-                            }
-                            
-                        });                                                
-                        
-                        var ajaxParamSubscribe = {email: emailUser,postid: postID,wpnonce: wpNonce};
-                        
-                        if(formHidden == formCheckId) {
-                            
-                            jQuery('#<?php echo $idForm; ?> .loader').html('<img src="<?php echo DEALS_IMG.'ajax-loader.gif'; ?>" alt="Loading..." />');                        
-                            jQuery('#<?php echo $idForm; ?> .result').html('');
-                            
-                            jQuery('#<?php echo $idForm; ?> .result').html('<img src="<?php echo DEALS_IMG.'ajax-loader.gif'; ?>" alt="Loading..." /> Loading...');
-                            
-                            jQuery('.result').load('<?php echo DEALS_TEMPLATE_URL.'form/subscribe_save.php'; ?>', ajaxParamSubscribe,
-                            function() {
-                                    jQuery('#<?php echo $idForm; ?> .loader').html('');
-                                    jQuery('#<?php echo $idForm; ?>').fadeOut(200);
-                                    jQuery(this).fadeIn(200);
-                            });   
-                            
-                        }                                                
-
-                        return false;
-                });    
-
-        });
-    </script>
-    
-    <form id="<?php echo $idForm; ?>" action="" method="post" class="form-subscriber clearfix">
-            <div class="input">
-                    <input type="email" name="email" id="form_email" placeholder="Enter Email Address" />
-            </div>
-        
-            <?php //$text = ($post->ID == null)? __('Get Notified', 'wpdeals'):__('Download', 'wpdeals'); ?>                        
-
-            <div class="submit">
-                    <input type="submit" name="submit_form" value="<?php echo $text; ?>">
-            </div>
-
-            <input type="hidden" name="id" id="postid" value="<?php if(is_singular('daily-deals')) echo $post->ID; ?>" />
-            <input type="hidden" name="idForm" id="idForm" value="<?php echo $idForm; ?>" />
-            <?php wp_nonce_field('nonce_form_subscribe'); ?>
-            
-    </form>
-    <div class="result"></div>
-<?php
 }
 
 /**
@@ -945,35 +717,32 @@ function deals_form_subscribe($idForm = null, $text='Download'){
  * @param string $email
  * @return void
  */
-function deals_send_email($postid, $email){
+function deals_free_send_email($postid, $email){
 
-    /*
-     hook to download link
+    /**
+     * hook to download link
      */
-    $link_download = get_post_meta($postid, 'product_link', true);
-    $link_download = apply_filters('deals_download_link',$link_download,$postid);
+    $link_download = get_post_meta($postid, '_product_link', true);
+    $link_download = apply_filters('deals_download_link', $link_download, $postid);
+    
+    $user_email = stripslashes($email);
+
+    // The blogname option is escaped with esc_html on the way into the database in sanitize_option
+    // we want to reverse this for the plain text arena of emails.
+    $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
     
     $mail_validate = filter_var($email,FILTER_VALIDATE_EMAIL);
-    $mail_subject = 'Your Free Deals - ' . get_the_title($postid);
-    $mail_content = 'Hello,'."\r\n".
-                    'Here the link for the deal that you are requested :'."\r\n".
-                    $link_download."\r\n"
-                    .'Enjoy this product';
-
-    $headers = "Content-Type: text/html" . "\r\n";
-    $headers .= ' From: '.  get_bloginfo('name') . ' <'.  get_option('admin_email') .'>' . "\r\n";
+    $mail_subject = sprintf(__('[%s] Your free stuff'), $blogname);
+    $mail_content = 'Here the link for the deal that you are requested :'."\r\n\r\n";
+    $mail_content .= $link_download."\r\n\r\n";
+    $mail_content .= 'Enjoy this product'. "\r\n";
     
-    //$sent_email = wp_mail($email, $mail_subject, $mail_content, $headers);
-    $sent_email_status = 'error';
+    $sent_email_status = (wp_mail($email, $mail_subject, $mail_content) == true) ? 'sent' : 'error';
     
-    if($mail_validate) {
-        $sent_email_status = (wp_mail($email, $mail_subject, $mail_content, $headers) == true) ? 'sent' : 'error';
-    }    
-    
-    /*
-     not counting download and inventory
-     if requested post is not daily-deals
-     post type
+    /**
+     * not counting download and inventory
+     * if requested post is not daily-deals
+     * post type
     */
     $wppost = get_post($postid);
     if($wppost->post_type == 'daily-deals') {
@@ -1038,7 +807,7 @@ function deals_price_format( $price, $args = array() ) {
  */
 function deals_minus_inventory($post_id) {
     
-    $stock_before = get_post_meta($post_id,'stock',true);
+    $stock_before = get_post_meta($post_id,'_stock',true);
     
     if(!empty($stock_before) || $stock_before > -1) {
              
@@ -1046,7 +815,7 @@ function deals_minus_inventory($post_id) {
         deals_expired_inventory($post_id);
         
         if($stock_before > 0) {
-            update_post_meta($post_id,'stock',$stock_after);
+            update_post_meta($post_id,'_stock',$stock_after);
         }        
         
     }        
@@ -1062,9 +831,9 @@ function deals_minus_inventory($post_id) {
  */
 function deals_expired_inventory($post_id) {
     
-    $stock = get_post_meta($post_id,'stock',true);
+    $stock = get_post_meta($post_id,'_stock',true);
     if(!empty($stock) && $stock == 0) {
-        update_post_meta($post_id, 'is_expired', 'yes', 'no');
+        update_post_meta($post_id, '_is_expired', 'yes', 'no');
     }
     
 }
@@ -1083,5 +852,226 @@ function deals_count_download($post_id) {
     $table = $wpdb->prefix.'wpdeals_download';
     $wpdb->insert($table,array('item_id' => $post_id,
                                'download_date' => date('c')));
+    
+}
+
+	
+/**
+ * Clean variables
+ **/
+function deals_clean( $var ) {
+	return trim(strip_tags(stripslashes($var)));
+}
+
+
+/**
+ * Get image url thumb full
+ *
+ * @param type $id
+ * @param type $size
+ * @return type 
+ */
+function deals_get_thumb_image_url($id = null, $size = 'full'){
+    
+        $image  = wp_get_attachment_image_src(get_post_thumbnail_id($id), $size);
+        return $image[0];
+        
+}
+
+
+
+/**
+ * Process the login form
+ **/
+add_action('init', 'deals_process_login', 1);
+ 
+function deals_process_login() {
+    
+        global $deals_error;
+    	
+	if (isset($_POST['login']) && $_POST['login']) :
+	
+		wp_verify_nonce('login');
+
+		if ( !isset($_POST['username']) || empty($_POST['username']) ) $deals_error->add_error(__('Username is required.', 'wpdeals'));
+		if ( !isset($_POST['password']) || empty($_POST['password']) ) $deals_error->add_error(__('Password is required.', 'wpdeals'));
+		
+		if (count($error) == 0) :
+			
+			$creds = array();
+			$creds['user_login'] = $_POST['username'];
+			$creds['user_password'] = $_POST['password'];
+			$creds['remember'] = true;
+			$secure_cookie = is_ssl() ? true : false;
+			$user = wp_signon( $creds, $secure_cookie );
+			if ( is_wp_error($user) ) :
+				$deals_error->add_error( $user->get_error_message() );
+			else :
+				if ( wp_get_referer() ) :
+					wp_safe_redirect( wp_get_referer() );
+					exit;
+				endif;
+                                
+				wp_redirect(get_permalink(get_option('deals_page_profile_id')));
+				exit;
+			endif;
+			
+		endif;
+                                
+	endif;	
+}
+
+
+/**
+ * Process the registration form
+ **/
+add_action('init', 'deals_process_registration', 1);
+ 
+function deals_process_registration() {
+	
+	global $deals_error;
+	
+	if (isset($_POST['register']) && $_POST['register'] ) :
+		
+		// Get fields
+		$sanitized_user_login 	= (isset($_POST['username'])) ? sanitize_user(trim($_POST['username'])) : '';
+		$user_email 		= (isset($_POST['email'])) ? esc_attr(trim($_POST['email'])) : '';
+		$password               = (isset($_POST['password'])) ? esc_attr(trim($_POST['password'])) : '';
+		$password2              = (isset($_POST['password2'])) ? esc_attr(trim($_POST['password2'])) : '';
+		
+		$user_email = apply_filters( 'user_registration_email', $user_email );
+		
+		// Check the username
+		if ( $sanitized_user_login == '' ) {
+			$deals_error->add_error( __( '<strong>ERROR</strong>: Please enter a username.', 'wpdeals' ) );
+		} elseif ( ! validate_username( $_POST['username'] ) ) {
+			$deals_error->add_error( __( '<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username.', 'wpdeals' ) );
+			$sanitized_user_login = '';
+		} elseif ( username_exists( $sanitized_user_login ) ) {
+			$deals_error->add_error( __( '<strong>ERROR</strong>: This username is already registered, please choose another one.', 'wpdeals' ) );
+		}
+	
+		// Check the e-mail address
+		if ( $user_email == '' ) {
+			$deals_error->add_error( __( '<strong>ERROR</strong>: Please type your e-mail address.', 'wpdeals' ) );
+		} elseif ( ! is_email( $user_email ) ) {
+			$deals_error->add_error( __( '<strong>ERROR</strong>: The email address isn&#8217;t correct.', 'wpdeals' ) );
+			$user_email = '';
+		} elseif ( email_exists( $user_email ) ) {
+			$deals_error->add_error( __( '<strong>ERROR</strong>: This email is already registered, please choose another one.', 'wpdeals' ) );
+		}
+	
+		// Password
+		if ( !$password ) $deals_error->add_error( __('Password is required.', 'wpdeals') );
+		if ( !$password2 ) $deals_error->add_error( __('Re-enter your password.', 'wpdeals') );
+		if ( $password != $password2 ) $deals_error->add_error( __('Passwords do not match.', 'wpdeals') );
+		
+		// Spam trap
+		if (isset($_POST['email_2']) && $_POST['email_2']) $deals_error->add_error( __('Anti-spam field was filled in.', 'wpdeals') );
+		
+		if ($deals_error->error_count()==0) :
+			
+			$reg_errors = new WP_Error();
+			do_action('register_post', $sanitized_user_login, $user_email, $reg_errors);
+			$reg_errors = apply_filters( 'registration_errors', $reg_errors, $sanitized_user_login, $user_email );
+	
+                        // if there are no errors, let's create the user account
+			if ( !$reg_errors->get_error_code() ) :
+
+                                $user_id 	= wp_create_user( $sanitized_user_login, $password, $user_email );
+
+                                if ( !$user_id ) {
+                                        $deals_error->add_error( sprintf(__('<strong>ERROR</strong>: Couldn&#8217;t register you... please contact the <a href="mailto:%s">webmaster</a> !', 'wpdeals'), get_option('admin_email')));
+                                    return;
+                                }
+                                
+                                // Change role
+                                wp_update_user( array ('ID' => $user_id, 'role' => 'customer') ) ;
+
+                                // send the user a confirmation and their login details
+                                wp_new_user_notification( $user_id, $password );
+
+                                // set the WP login cookie
+                                $secure_cookie = is_ssl() ? true : false;
+                                wp_set_auth_cookie($user_id, true, $secure_cookie);
+
+                                // Redirect
+                                if ( wp_get_referer() ) :
+                                        wp_safe_redirect( wp_get_referer() );
+                                        exit;
+                                endif;
+                                        
+                                        wp_redirect(get_permalink(get_option('deals_page_profile_id')));
+                                        exit;
+
+                                else :
+                                        $deals_error->add_error( $reg_errors->get_error_message() );
+                                        return;                 
+                                endif;
+			
+                        endif;
+	
+                endif;	
+}
+
+
+/**
+ * Save form subscribe
+ *
+ * @global object $post
+ * @param int $idForm [optional]
+ * @return void
+ */
+add_action('init', 'deals_process_subscribe', 1);
+function deals_process_subscribe(){ 
+	
+	global $deals_error;
+	
+	if (isset($_POST['email']) && $_POST['email'] ) :
+            
+                wp_verify_nonce('_subscribe');
+            
+		// Get fields
+                $email          = strtolower($_POST['email']);
+                $user_email 	= (isset($_POST['email'])) ? esc_attr(trim($_POST['email'])) : '';		
+		$user_email     = apply_filters( 'user_registration_email', $user_email );
+		$post_id        = (isset($_POST['post_id'])) ? esc_attr(trim($_POST['post_id'])) : '';
+                                
+                //get all the current emails
+                $stack = get_option('deals_subscribed_emails', array());
+		
+	
+		// Check the e-mail address
+		if ( $user_email == '' ) {
+			$deals_error->add_error( __( '<strong>ERROR</strong>: Please type your e-mail address.', 'wpdeals' ) );
+		} elseif ( ! is_email( $user_email ) ) {
+			$deals_error->add_error( __( '<strong>ERROR</strong>: The email address isn&#8217;t correct.', 'wpdeals' ) );
+			$user_email = '';
+		} elseif ( in_array($email, $stack) AND $post_id == '' AND !empty($stack) ) {
+			$deals_error->add_error( __( '<strong>ERROR</strong>: This email is already registered, please choose another one.', 'wpdeals' ) );
+		}
+                                
+                // send free deals
+                if(isset($post_id) AND !empty($post_id))
+                    deals_free_send_email($post_id, $email);
+                
+		if ($deals_error->error_count()==0) :
+                    
+                        // If there is more than one email, add the new email to the array
+                        if ( !in_array($email, $stack) ) {
+                            array_push($stack, $email);
+
+                            //update the option with the new set of emails
+                            update_option('deals_subscribed_emails', $stack);
+                        }
+                        
+                        if(isset($post_id) AND !empty($post_id))
+                            $deals_error->add_message( '<span class="success">' . __( 'Check download link in your email (Inbox or spam folder).', 'wpdeals' ) . '</span>' );
+                        else                            
+                            $deals_error->add_message( '<span class="success">' . __( 'Your email has been registered.', 'wpdeals' ) . '</span>' );
+                                                                    
+                endif;
+                                
+        endif;
     
 }

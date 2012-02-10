@@ -1,0 +1,1189 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Deals\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-10 11:08+0700\n"
+"PO-Revision-Date: 2012-02-10 11:09+0700\n"
+"Last-Translator: Onnay Okheng <onnay.okheng@gmail.com>\n"
+"Language-Team: WP Deals <hello@wpdeals.me>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: INDONESIA\n"
+"X-Poedit-SearchPath-0: D:\\xampp\\htdocs\\wpdeals\\wp-content\\plugins\\wp-deals-labs\n"
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:735
+#, php-format
+msgid "[%s] Your free stuff"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:896
+msgid "Username is required."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:897
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:965
+msgid "Password is required."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:946
+msgid "<strong>ERROR</strong>: Please enter a username."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:948
+msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:951
+msgid "<strong>ERROR</strong>: This username is already registered, please choose another one."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:956
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:1046
+msgid "<strong>ERROR</strong>: Please type your e-mail address."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:958
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:1048
+msgid "<strong>ERROR</strong>: The email address isn&#8217;t correct."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:961
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:1051
+msgid "<strong>ERROR</strong>: This email is already registered, please choose another one."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:966
+msgid "Re-enter your password."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:967
+msgid "Passwords do not match."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:970
+msgid "Anti-spam field was filled in."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:984
+#, php-format
+msgid "<strong>ERROR</strong>: Couldn&#8217;t register you... please contact the <a href=\"mailto:%s\">webmaster</a> !"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:1069
+msgid "Check download link in your email (Inbox or spam folder)."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_functions.php:1071
+msgid "Your email has been registered."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:21
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:304
+msgid "Deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:22
+msgid "Deal"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:23
+msgid "Add Deal"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:24
+msgid "Add New Deal"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:25
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:54
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-import.php:56
+msgid "Edit"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:26
+msgid "Edit Deal"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:27
+msgid "New Deal"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:28
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:29
+msgid "View Deal"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:30
+msgid "Search Deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:31
+msgid "No Deals found"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:32
+msgid "No Deals found in trash"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:33
+msgid "Parent Deal"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:35
+msgid "This is where you can add new deals to your store."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:50
+msgid "Sales"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:51
+msgid "Sale"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:52
+msgid "Add Sale"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:53
+msgid "Add New Sale"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:55
+msgid "Edit Sale"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:56
+msgid "New Sale"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:57
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:58
+msgid "View Sale"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:59
+msgid "Search Sales"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:60
+msgid "No Sales found"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:61
+msgid "No Sales found in trash"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:62
+msgid "Parent Sale"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:64
+msgid "Stored and manage all sales data transaction."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:107
+msgid "Deal Categories"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:108
+msgid "Deal Category"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:109
+msgid "Deal Search Category"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:110
+msgid "All Deal Categories"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:111
+msgid "Edit Deal Category"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:112
+msgid "Update Deal Category"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:113
+msgid "Add Deal Category"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:114
+msgid "New Deal Category"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:129
+msgid "Deal Tags"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:130
+msgid "Deal Tag"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:131
+msgid "Deal Search Tag"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:132
+msgid "All Deal Tags"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:133
+msgid "Edit Deal Tag"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:134
+msgid "Update Deal Tag"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:135
+msgid "Add Deal Tag"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:136
+msgid "New Deal Tag"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:162
+msgid "Customer"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_init.php:169
+msgid "Deals Manager"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates.php:45
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates.php:86
+msgid "invalid security check"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates.php:65
+msgid "Sales ID #"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates.php:143
+msgid "Close"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates.php:144
+msgid "Download Form"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates.php:145
+msgid "Enter your email below, for the download link."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates.php:150
+msgid "Download here"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates.php:152
+msgid "Enter your email"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates.php:153
+msgid "Check your INBOX or SPAM folder."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates.php:310
+msgid "Enter Email Address"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates_functions.php:77
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates_functions.php:78
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates_functions.php:143
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates_functions.php:149
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates_functions.php:196
+msgid "Deals Expired"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates_functions.php:172
+msgid "This deal will end in:"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates_functions.php:201
+msgid "Free"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates_functions.php:204
+msgid "Value"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates_functions.php:205
+msgid "Discount"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates_functions.php:206
+msgid "You Save"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates_functions.php:256
+msgid "Posted in: "
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates_functions.php:259
+msgid "Tags: "
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals_templates_functions.php:335
+#, php-format
+msgid "Hello, <strong>%s</strong>. This is your dashboard.<br/><a href=\"%s\" title=\"Your Profile\">Your Profile</a><br/><a href=\"%s\" title=\"Your history page\">Your History</a><br/><a href=\"%s\" title=\"Logout\">Logout</a>"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-import.php:52
+msgid "Search"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-import.php:53
+msgid "All"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-import.php:54
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-import.php:55
+msgid "Parent"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-import.php:57
+msgid "Update"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-import.php:58
+msgid "Add New"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-import.php:59
+msgid "New"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-init.php:32
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-init.php:33
+msgid "WP Deals Settings"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-init.php:32
+msgid "WP Deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-init.php:33
+msgid "Settings"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-init.php:35
+msgid "Deals Subscribers"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-init.php:35
+msgid "Subscribers"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings-forms.php:177
+msgid "Width"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings-forms.php:179
+msgid "Height"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings-forms.php:181
+msgid "Hard Crop"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings-forms.php:252
+msgid "Select a page..."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:23
+msgid "General Options"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:26
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:140
+msgid "Currency"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:27
+msgid "This controls what currency prices are listed at in the catalog and which currency gateways will take payments in."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:35
+msgid "US Dollars (&#36;)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:36
+msgid "Euros (&euro;)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:37
+msgid "Pounds Sterling (&pound;)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:38
+msgid "Australian Dollars (&#36;)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:39
+msgid "Brazilian Real (&#36;)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:40
+msgid "Canadian Dollars (&#36;)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:41
+msgid "Czech Koruna (&#75;&#269;)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:42
+msgid "Danish Krone"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:43
+msgid "Hong Kong Dollar (&#36;)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:44
+msgid "Hungarian Forint"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:45
+msgid "Israeli Shekel"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:46
+msgid "Japanese Yen (&yen;)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:47
+msgid "Malaysian Ringgits"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:48
+msgid "Mexican Peso (&#36;)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:49
+msgid "New Zealand Dollar (&#36;)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:50
+msgid "Norwegian Krone"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:51
+msgid "Philippine Pesos"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:52
+msgid "Polish Zloty"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:53
+msgid "Singapore Dollar (&#36;)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:54
+msgid "Swedish Krona"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:55
+msgid "Swiss Franc"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:56
+msgid "Taiwan New Dollars"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:57
+msgid "Thai Baht"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:58
+msgid "Turkish Lira (TL)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:59
+msgid "South African rand (R)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:64
+msgid "Security"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:65
+msgid "Force <abbr title=\"Secure Sockets Layer, a computing protocol that ensures the security of data sent via the Internet by using encryption\">SSL</abbr>/HTTPS (an SSL Certificate is required)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:71
+msgid "View type"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:72
+msgid "Select type for your view deals."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:79
+msgid "List View"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:80
+msgid "Grid View"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:84
+msgid "Styling"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:85
+msgid "Enable WP Deals CSS styles"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:93
+msgid "Share Button"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:96
+msgid "Display share button?"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:97
+msgid "Displaying share button."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:103
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:133
+msgid "No"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:104
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:134
+msgid "Yes"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:117
+msgid "Deals Options"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:119
+msgid "Deals per page"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:120
+msgid "Set your max deals item per page."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:126
+msgid "Random deals on featured"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:127
+msgid "Check if you want make deals random on featured page."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:149
+msgid "Left"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:150
+msgid "Right"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:151
+msgid "Left (with space)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:152
+msgid "Right (with space)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:156
+msgid "Thousand separator"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:157
+msgid "This sets the thousand separator of displayed prices."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:163
+msgid "Decimal separator"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:164
+msgid "This sets the decimal separator of displayed prices."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:170
+msgid "Number of decimals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:171
+msgid "This sets the number of decimal points shown in displayed prices."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:179
+msgid "Image Options"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:182
+msgid "Default Deal Image Size (List)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:183
+msgid "This size is usually used in deals listings (List)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:191
+msgid "Default Deal Image Size (Grid)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:192
+msgid "This size is usually used in deals listings (Grid)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:200
+msgid "Single Product Image"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:201
+msgid "This is the size used by the main image on the deals page."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:216
+msgid "Invoice template"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:218
+msgid "This section lets you customise the WP Deals invoices. "
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:222
+msgid "Store Name"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:223
+msgid "Your deal store name."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:231
+msgid "Store Logo"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:232
+#, php-format
+msgid "Enter a URL to an image you want to show in the invoice's header. Upload your image using the <a href=\"%s\">media uploader</a>."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:240
+msgid "Store Description"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:241
+msgid "Your deal store description."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:249
+msgid "Invoice's Footer Text"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:250
+msgid "The text to appear in the footer of WP Deals invoices."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:254
+msgid "Powered by WP Deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:274
+msgid "Action failed. Please refresh the page and retry."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:293
+msgid "Your settings have been saved."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:303
+msgid "General"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:305
+msgid "Payment Gateways"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:306
+msgid "Invoice"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:337
+msgid "Save changes"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-settings.php:357
+msgid "The changes you made will be lost if you navigate away from this page."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-subscribe-save.php:43
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-subscribe-save.php:54
+msgid "<p class='success'>Check your email, for download the item (Inbox or Spam folder).</p>"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-subscribe-save.php:45
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-subscribe-save.php:56
+msgid "<p class='success'>Your email has been registered.</p>"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-subscribe-save.php:61
+msgid "<p class='error'><span class='cross'></span>please enter a valid email address</p>"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-subscribers.php:121
+msgid "Export"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-subscribers.php:314
+msgid "[close]"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-subscribers.php:318
+msgid "Import CSV"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/admin-subscribers.php:321
+msgid "Upload"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-daily_deals.php:16
+msgid "Price"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-daily_deals.php:17
+msgid "Discount Price"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-daily_deals.php:18
+msgid "Item Stocks"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-daily_deals.php:19
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-deals_sales.php:10
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-deals_sales.php:162
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:208
+msgid "Status"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-daily_deals.php:20
+msgid "Featured"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-daily_deals.php:58
+msgid "Empty"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-deals_sales.php:9
+msgid "Transaction ID"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-deals_sales.php:11
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-deals_sales.php:163
+msgid "Method"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-deals_sales.php:12
+msgid "User Name"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-deals_sales.php:13
+msgid "Item Name"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-deals_sales.php:14
+msgid "Amount"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-deals_sales.php:15
+msgid "Invoice Preview"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/post-deals_sales.php:16
+msgid "Date"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-daily-deals.php:10
+msgid "Regular Price (value)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-daily-deals.php:11
+msgid "Discount Price (value)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-daily-deals.php:12
+msgid "Stock (value)"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-daily-deals.php:13
+msgid "End Time"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-daily-deals.php:16
+msgid "Set Expired"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-daily-deals.php:62
+msgid "File path"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:84
+msgid "Your Deals Transaction For "
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:139
+msgid "Choose User"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:152
+msgid "Choose Items"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:166
+msgid "None"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:180
+msgid "Payments"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:186
+msgid "No payment available"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:210
+msgid "Completed"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:211
+msgid "Pending"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:212
+msgid "On Hold"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:213
+msgid "Refund"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:229
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:233
+msgid "Save & Send Invoice"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-deals-sales.php:237
+msgid "Save"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-init.php:23
+msgid "Deals Detail"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-init.php:24
+msgid "Deals File"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-init.php:27
+msgid "Change Status"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-init.php:28
+msgid "Save Transaction"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-init.php:29
+msgid "Payment Methods"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-init.php:30
+msgid "Transaction Details"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-init.php:45
+msgid "Deals name"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-init.php:46
+msgid "Deals Sales"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-init.php:115
+msgid "File path/URL"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-admin/post-type/metaposts/meta-init.php:116
+msgid "Upload a file"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-payments/abstract-payment-gateway.php:103
+msgid "[SUCCEED] Your Deals Transaction For "
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-payments/abstract-payment-gateway.php:115
+#, php-format
+msgid "Deal Transaction - Invoice - %s"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-payments/class-payment-options.php:58
+msgid "This section lets you manage your payment gateways. "
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-payments/class-payment-options.php:73
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-payments/class-payment-options.php:85
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-payments/class-payment-options.php:95
+msgid "Available Payments"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-payments/default/class-payment-paypal.php:34
+msgid "Paypal Payment Gateways"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-payments/default/class-payment-paypal.php:36
+msgid "This section lets you manage your paypal configurations. "
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-payments/default/class-payment-paypal.php:40
+msgid "Paypal Email"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-payments/default/class-payment-paypal.php:41
+msgid "Your paypal email"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-payments/default/class-payment-paypal.php:54
+msgid "Enable Test Mode"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-payments/default/class-payment-paypal.php:55
+msgid "enable paypal sandbox for testing payment transactions"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_account.php:30
+msgid "Change Password"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_account.php:69
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/form/deals-form.php:10
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/form/deals-form.php:39
+msgid "Password"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_account.php:73
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/form/deals-form.php:43
+msgid "Re-enter password"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_account.php:116
+msgid "Invalid Request"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_account.php:125
+msgid "Invalid User. You must login first to do a transactions."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_account.php:153
+msgid "Invalid requested item."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_account.php:157
+msgid "You have not bought any item yet."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_account.php:159
+msgid "Thank you for your buying, please check your user profile page to download your link. We have been sent an invoice to your email address : "
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_history.php:54
+msgid "Transaction History"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_history.php:63
+msgid "Items"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_history.php:64
+msgid "Link"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_history.php:65
+msgid "Invoices"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_history.php:89
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_history.php:90
+msgid "Download"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_history.php:89
+msgid "No Link"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-shortcodes/shortcode-user_history.php:99
+msgid "No transaction result."
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/archive-deal.php:6
+msgid "Search Results:"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/featured-deal.php:14
+msgid "Sorry No deals found"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/form/deals-form.php:3
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/form/deals-form.php:18
+msgid "Login"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/form/deals-form.php:6
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/form/deals-form.php:29
+msgid "Username"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/form/deals-form.php:19
+msgid "Lost Password?"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/form/deals-form.php:25
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/form/deals-form.php:53
+msgid "Register"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/form/deals-form.php:33
+msgid "Email"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/form/subscribe-form.php:11
+msgid "Oops, it looks like you just missed out on our Deals. Dang. Sign up below to stay tuned for our next bundle!"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-template/form/subscribe-form.php:17
+msgid "Share to the world !"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-categories.php:18
+msgid "Use this widget to list your deal categories"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-categories.php:19
+msgid "Deals - Categories"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-categories.php:51
+msgid "Categories Deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-categories.php:120
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-featured.php:160
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-free.php:177
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-randoms.php:159
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-recents.php:160
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-tags.php:118
+msgid "Title:"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-categories.php:123
+msgid "Number of categories to show:"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-featured.php:18
+msgid "Use this widget to list your featured deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-featured.php:19
+msgid "Deals - Featured"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-featured.php:51
+msgid "Featured Deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-featured.php:163
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-free.php:180
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-randoms.php:162
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-recents.php:163
+msgid "Number of posts to show:"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-featured.php:167
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-free.php:184
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-randoms.php:166
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-recents.php:167
+msgid "Width:"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-featured.php:169
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-free.php:186
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-randoms.php:168
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-recents.php:169
+msgid "Height:"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-free.php:18
+msgid "Use this widget to list your free deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-free.php:19
+msgid "Deals - Freebies"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-free.php:51
+msgid "Frees Deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-randoms.php:18
+msgid "Use this widget to list your random deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-randoms.php:19
+msgid "Deals - Randoms"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-randoms.php:51
+msgid "Randoms Deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-recents.php:18
+msgid "Use this widget to list your recent deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-recents.php:19
+msgid "Deals - Recents"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-recents.php:51
+msgid "Recents Deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-tags.php:18
+msgid "Use this widget to get all your deal tags"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-tags.php:19
+msgid "Deals - Tags"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-tags.php:51
+msgid "Tags Deals"
+msgstr ""
+
+#: D:\xampp\htdocs\wpdeals\wp-content\plugins\wp-deals-labs/deals-widgets/widget-tags.php:121
+msgid "Number of tags to show:"
+msgstr ""
+

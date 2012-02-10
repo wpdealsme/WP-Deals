@@ -5,31 +5,34 @@
     Description:
         Purpose of the stylesheet follows.
 */
+ 
+#content .recent-deal-title {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+}
 
-.recent-image-wrap a {
+.recent-deal-thumbnail a {
 	display: block;
 	height: auto;
 	width: 100%;
 }
-.recent-deal-title {
-	font: bold 1.2em/1.5 sans-serif;
-	text-align: center;
-}
 .hasCountdown {
-	font-family: sans-serif;
-	font-weight: bold;
+	font-size: 10px;
+	color: #999;
 	margin: 1em 0 0;
 	text-align: center;
+	word-wrap: break-word;
 }
 .countdown_section {
 	margin-right: .5em;
 }
 .countdown_amount {
-	color: #c10;
+	color: #ff4b33;
 	margin-right:1%;
 	text-shadow: 0 1px 0 #fff;
 }
-.deal_expired {
+.deal-expired {
 	text-align: center;
 	padding: 0.7em;
 	color: #9F0A28;
@@ -39,14 +42,27 @@
 	text-transform: uppercase;
 	font: bold 1.3em sans-serif;
 }
+.deal-free {
+	background: #50B25F;
+	color: #fff;
+	margin-top: .4em;
+	padding: .7em 0;
+	text-align: center;
+	width: 100%;
+}
+
 .deal-thumbnail {
 	margin: auto;
 	display: block;
 }
 .deal-description {
-	padding: 5em 0;
+	padding: 1em 0;
 	display: inline-block;
 	width: 100%;
+}
+.deals-view-type {
+	display: block;
+	text-align: right;
 }
 
 /* Deals Grid View */
@@ -56,15 +72,19 @@
 	margin-right: 5%;
 	width: 30%;
 }
-.wp-deals-grid .daily-deals:nth-child(3n+3) {
+.wp-deals-grid .last-deals-item {
 	margin-right:0;
 }
+.wp-deals-grid .first-deals-item {
+	clear: left;
+}
+
 .wp-deals-grid .deal-description,
 .wp-deals-grid .deal-discount-block {
 	display:none;
 }
-.wp-deals-grid .recent-image-wrap {
-	margin-bottom: 1.5em;
+.wp-deals-grid .recent-deal-thumbnail {
+	margin: 0 0 1.5em;
 	display: block;
 }
 
@@ -76,16 +96,25 @@
 .wp-deals-list .recent-deal-title {
 	font-size:1.5em;
 	text-align:left;
+	clear: right;
 }
 .wp-deals-list .recent-deal-title,
 .wp-deals-list .another-timer-block,
-.wp-deals-list .deal-description {
+.wp-deals-list .deal-description,
+.wp-deals-list .deal-free,
+.wp-deals-list .deal-expired {
 	float:right;
 	width:50%;
 }
-.wp-deals-list .recent-image-wrap {
+.wp-deals-list .recent-deal-thumbnail {
+	display: inline;
 	float: left;
+	margin: 0;
 	width: 45%;
+}
+.wp-deals-list .hasCountdown {
+	font-size: 14px;
+	margin: 1em 0;
 }
 .wp-deals-list .deal-discount-block {
 	float:right;
@@ -102,7 +131,7 @@
 
 /* Single Deal */
 h1.deal-title{
-        margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 #deal-content-wrap {
 	width:100%;
@@ -111,12 +140,17 @@ h1.deal-title{
 	float: left;
 	width: 45%;
 }
-#price-block {
+
+.buy-wrap .hasCountdown {
+	font: bold 13px arial, sans-serif;
+	color: #111;
+}
+.price-block {
 	background: #edf0c6;
 	padding: 1em;
 	border: 1px solid #e1c0c6;
 }
-#price-block a:link, #price-block a:visited,
+.price-block a:link, .price-block a:visited,
 .expired-button,
 #bottom-price-block a:link, #bottom-price-block a:visited {
 	background: url(../images/pricedeal.png);
@@ -131,43 +165,46 @@ h1.deal-title{
 	text-indent: -20px;
 	text-align: center;
 }
-#price-block a:hover, #bottom-price-block a:hover {
+.price-block a:hover, #bottom-price-block a:hover {
 	background: url(../images/pricedeal.png) 0 65px;
 	color:#fff;
 }
-#price-block a:active, #bottom-price-block a:active {
+.price-block a:active, #bottom-price-block a:active {
 	background: url(../images/pricedeal.png) 0 130px;
 	color:#fff;
 }
-#price-block .free:link, #bottom-price-block .free:link, #price-block .free:visited, #bottom-price-block .free:visited { background: url(../images/pricedeal-green.png); }
-#price-block .free:hover, #bottom-price-block .free:hover { background: url(../images/pricedeal-green.png) 0 65px; }
-#price-block .free:active, #bottom-price-block .free:active { background: url(../images/pricedeal-green.png) 0 130px; }
+.price-block .free:link, #bottom-price-block .free:link, .price-block .free:visited, #bottom-price-block .free:visited { background: url(../images/pricedeal-green.png); }
+.price-block .free:hover, #bottom-price-block .free:hover { background: url(../images/pricedeal-green.png) 0 65px; }
+.price-block .free:active, #bottom-price-block .free:active { background: url(../images/pricedeal-green.png) 0 130px; }
 .expired-button { background:url(../images/pricedeal-red.png); }
-.deal-discount-block, #timer-block, #deal-share-block {
-	display:block;
-	margin: .5em 0;
-	padding: 1em;
+.deal-discount-block, .deal-wrapper .another-timer-block, #deal-share-block {
 	background: #dddbf6;
 	border: 1px solid #aaa;
-	font:13px sans-serif;
+	display:block;
+	font-size:13px;
+	margin: .5em 0;
+	overflow: hidden;
+	padding: 1em;
 	text-align: center;
 	text-shadow:1px 1px 0 #fff;
 }
-.tiny-price-title {
+.list-price-title {
 	font-weight:bold;
 	float: left;
 	width: 33%;
 }
 .price-num {
 	font-size: 1.5em;
+	font-family: arial, sans-serif;
 	margin-top: 0.5em;
 	display: block;
 	color: #1c6ddb;
 }
 #deal-share-block {
-	padding:2% 5% 0;
+	padding:3% 5%;
 	display:inline-block;
 	width:90%;
+	margin-top:0;
 }
 .deal-sharer:first-child {
 	float:left;
@@ -180,9 +217,11 @@ h1.deal-title{
 	padding:.5em 0;
 }
 .deal-image-wrap {
-        overflow: hidden;
-        float: left;
-        margin-left: 30px;
+	clear: right;
+	display: inline;
+	float: left;
+	margin: 0 0 0 30px;
+	overflow: hidden;
 }
 .deal-image-wrap img {
 	border:.5em solid #aaa;
@@ -201,10 +240,12 @@ h1.deal-title{
 .single-wp-deals .countdown_row {
 	font-size:1.3em;
 }
-#deal-footer {
-	float: left;
-	width: 100%;
-	margin: 3em 0 0;
+#deal-meta-footer {
+	margin: 2em 0;
+}
+
+.deals-history, .deals-profile {
+        clear: both;
 }
 
 /* Transaction History Table */
@@ -309,9 +350,26 @@ h1.deal-title{
 	-webkit-border-radius:3px;
 	-o-border-radius:3px;
 }
+.deals-user .required {
+        color: #CC0000;
+}
 #deals-loginform {
 	overflow: hidden;
-	padding: 2em 0;
+}
+.deals-error {
+        background: #FFE7A1;
+        border: 1px solid #D55C2B;
+        padding: 2px 10px;
+        margin-bottom: 10px;
+}
+.deals-message {
+        background: #DBF6BE;
+        border: 1px solid #008000;
+        padding: 2px 10px;
+        margin-bottom: 10px;
+}
+.deals-error p, .deals-message p.success {
+        margin: 0;
 }
 
 /* Deals Widget */
@@ -467,8 +525,6 @@ http://www.queness.com/post/1696/create-a-beautiful-looking-custom-dialog-box-wi
 
 .form-subscriber {
 	position:relative;
-	width:230px;
-	height:30px;
 	overflow:hidden;
 }
 .form-subscriber .input input[type="email"] {
@@ -515,11 +571,23 @@ http://www.queness.com/post/1696/create-a-beautiful-looking-custom-dialog-box-wi
 .form-subscriber .submit input[type="submit"]:active {
 }
 
-.wp-deals-list .deal_expired {
-	background-color: #50B25F;border:none;color:#efefef;float:right;width:50%;padding-left:0;padding-right:0;
+.wp-deals-list .deal-expired, .wp-deals-grid .deal-expired {    
+	text-align: center;
+	padding: 0.7em;
+	color: #9F0A28;
+	border: 1px solid #D55C2B;
+	margin: 0.7em 0;
+	background: #F6E7D3;
+	text-transform: uppercase;
+	font: bold 0.7em sans-serif;
 }
-.wp-deals-grid .deal_expired {
-	background-color: #50B25F;border:none;color:#efefef;
+
+.wp-deals-list .deal-free, .wp-deals-grid .deal-free {    
+	text-align: center;
+	color: #fff;
+	background: #50B25F;
+	text-transform: uppercase;
+	font: bold 0.7em sans-serif;
 }
 .wp-deals-list {
 	margin-top:2em;
@@ -552,7 +620,7 @@ http://www.queness.com/post/1696/create-a-beautiful-looking-custom-dialog-box-wi
 /*	Modal popup
 /*-----------------------------------------------------------------------------------*/
 
-#modal-popup, #subscribe_deals {
+#subscribe_deals {
     position: absolute;
     left: 0px;
     top: 0px;
@@ -566,7 +634,7 @@ http://www.queness.com/post/1696/create-a-beautiful-looking-custom-dialog-box-wi
 	opacity: 0;
 }
 
-#modal-overlay, .modal-overlay {
+#subscribe_deals #modal-overlay, #subscribe_deals .modal-overlay {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -577,9 +645,9 @@ http://www.queness.com/post/1696/create-a-beautiful-looking-custom-dialog-box-wi
     bottom: 0px;
 }
 
-#modal-container, .modal-container {
-	height: 440px;
-	width: 590px;
+#subscribe_deals #modal-container, #subscribe_deals .modal-container {
+        height: 320px;
+        width: 400px;
 	background: url(../images/overlay_inner_bg.png) repeat;
 	position: fixed;
 	padding: 10px;
@@ -587,13 +655,13 @@ http://www.queness.com/post/1696/create-a-beautiful-looking-custom-dialog-box-wi
 	font-family:helvetica, arial, sans-serif;
 }
 
-#modal-bg, .modal-bg {
+#subscribe_deals #modal-bg, #subscribe_deals .modal-bg {
 	background: #fdfdfd;
 	height: 100%; 
 	position: relative;
 }
 
-.modal-title {
+#subscribe_deals .modal-title {
 	font-size: 24px;
 	font-weight: bold;
 	color: white;
@@ -602,35 +670,24 @@ http://www.queness.com/post/1696/create-a-beautiful-looking-custom-dialog-box-wi
 	background: #444;
 	margin-bottom: 20px;
 }
-.modal-tagline {
+#subscribe_deals .modal-tagline {
 	font-size: 14px;
 	color: #5e6066;
 	text-align: center;
 	padding: 5px 0 0 0;
 }
 
-#subs-container, .subs-container {
-	padding: 35px 0;
+#subscribe_deals #subs-container, #subscribe_deals .subs-container {
+	padding: 10px 0 30px;
 	position: relative;
 	overflow:hidden;
 }
 
-.modal-side {
-	width: 230px;
-	text-align: center;
-	float: left;
+#subscribe_deals .modal-download {
+        text-align: center;
 }
 
-.modal-side.left {
-	padding: 0 30px 0 35px;
-	border-right: 1px solid #ecedf3;
-}
-
-.modal-side.right {
-	padding: 0 0 0 35px;
-}
-
-.modal-icon {
+#subscribe_deals .modal-icon {
 	width: 72px;
 	height: 54px;
 	padding: 6px 0 0 0;
@@ -638,48 +695,32 @@ http://www.queness.com/post/1696/create-a-beautiful-looking-custom-dialog-box-wi
 	text-indent: -9999px;
 }
 
-.modal-icon span.rss{
-	display: block;
-	width: 57px;
-	height: 56px;
-	margin: 0 auto;
-}
-
-.modal-icon a{
-	display: block;
-	width: 72px;
-	height: 54px;	
-}
-
-.modal-icon span.email {
+#subscribe_deals .modal-icon span.email {
 	background: url(../images/sprite.png) no-repeat -362px -183px;
 	display: block;
 	height: 54px;
 	width: 72px;
  }
-.modal-icon span:hover.email { background: url(../images/sprite.png) no-repeat -362px -238px; }
+#subscribe_deals .modal-icon span:hover.email { background: url(../images/sprite.png) no-repeat -362px -238px; }
 
-.modal-icon span.rss { background: url(../images/sprite.png) no-repeat -362px -71px; }
-.modal-icon span:hover.rss { background: url(../images/sprite.png) no-repeat -419px -71px; }
-
-.modal-side h4,
-.modal-side h4 a {
+#subscribe_deals .modal-download h4,
+#subscribe_deals .modal-download h4 a {
 	font-size: 14px;
 	line-height: 14px;
 	color: #2c2d31;
 	font-weight: bold;
 }
 
-.modal-side h4 { margin: 20px 0 10px 0; }
+#subscribe_deals .modal-download h4 { margin: 20px 0 10px 0; }
 
-.modal-side h5 {
+#subscribe_deals .modal-download h5 {
 	font-size: 11px;
 	color: #5e6066;
-	line-height: 18px;
-	margin: 0 0 20px 0;
+	line-height: 14px;
+	margin: 0;
 }
 
-a.sub {
+#subscribe_deals a.sub {
 	background: url(../images/sprite.png) no-repeat -362px 0;
 	height: 32px;
 	width: 92px;
@@ -690,12 +731,12 @@ a.sub {
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
-a:hover.sub {
+#subscribe_deals a:hover.sub {
 	background: url(../images/sprite.png) no-repeat -362px -33px;
 	color: #996633;
 }
 
-a.destroy {
+#subscribe_deals a.destroy {
 	display: block;
 	padding: 17px 0;
 	text-align: center;
@@ -708,17 +749,22 @@ a.destroy {
 	background: #f5f5f5;
 }
 
-.modal-side h4 a:hover,
-a:hover.destroy {
+#subscribe_deals .modal-download h4 a:hover,
+#subscribe_deals a:hover.destroy {
 	color: #f26535;
 }
 
-#modal-close, .modal-close {
+#subscribe_deals .modal-download .form-subscriber {
+        left: 0;
+        top: 23px;
+}
+
+#subscribe_deals #modal-close, #subscribe_deals .modal-close {
 	float: right;
 	position: relative;
 }
 
-#modal-close a, .modal-close a {
+#subscribe_deals #modal-close a, #subscribe_deals .modal-close a {
 	position: absolute;
 	width: 19px;
 	text-indent: -9999px;
@@ -728,9 +774,9 @@ a:hover.destroy {
 	top: 12px;
 }
 
-#modal-close a:hover, .modal-close a:hover { background: url(../images/sprite.png) no-repeat -455px -19px; }
+#subscribe_deals #modal-close a:hover, #subscribe_deals .modal-close a:hover { background: url(../images/sprite.png) no-repeat -455px -19px; }
 
-#modal-or, .modal-or {
+#subscribe_deals #modal-or, #subscribe_deals .modal-or {
 	position: absolute;
 	width: 20px;
 	height: 25px;
@@ -760,11 +806,12 @@ p.nodeal_notif {
 	font: 16px sans-serif;
 	padding: 5px 5px 5px 20px;
 	height: 30px;
-	width: 383px;
+	width: 360px;
 }
 #nodeal.form-subscriber .submit input[type="submit"] {
 	font-size:16px;
 	height: 40px;
+        color: #fff;
 }
 .nodeal_share {
 	margin: 50px 0 30px 110px;

@@ -63,5 +63,9 @@ jQuery(document).ready(function(){
 	jQuery("a.free").click( function () {
 		deals_displayModal_free();
 	});
+	
+	/* Deals container fit the image width
+	var lebar = jQuery("img.deal-thumbnail").width();
+	jQuery(".daily-deals").css("width", lebar); */
 		
 });

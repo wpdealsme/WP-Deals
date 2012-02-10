@@ -3,6 +3,211 @@
 //secure included files
 deals_secure();
 
+
+/**
+ * Register custom post type
+ * daily-deals
+ * 
+ * @return void
+ */
+function deals_register_posttype() {
+
+    /**
+     * Post Types
+     **/
+    register_post_type( "daily-deals",
+            array(
+                    'labels' => array(
+                            'name' 			=> __( 'Deals', 'wpdeals' ),
+                            'singular_name' 		=> __( 'Deal', 'wpdeals' ),
+                            'add_new' 			=> __( 'Add Deal', 'wpdeals' ),
+                            'add_new_item' 		=> __( 'Add New Deal', 'wpdeals' ),
+                            'edit' 			=> __( 'Edit', 'wpdeals' ),
+                            'edit_item' 		=> __( 'Edit Deal', 'wpdeals' ),
+                            'new_item' 			=> __( 'New Deal', 'wpdeals' ),
+                            'view' 			=> __( 'View Deal', 'wpdeals' ),
+                            'view_item' 		=> __( 'View Deal', 'wpdeals' ),
+                            'search_items' 		=> __( 'Search Deals', 'wpdeals' ),
+                            'not_found' 		=> __( 'No Deals found', 'wpdeals' ),
+                            'not_found_in_trash' 	=> __( 'No Deals found in trash', 'wpdeals' ),
+                            'parent' 			=> __( 'Parent Deal', 'wpdeals' )
+                    ),
+                    'description' 			=> __( 'This is where you can add new deals to your store.', 'wpdeals' ),
+                    'public' 				=> true,
+                    'show_ui' 				=> true,
+                    'publicly_queryable'                => true,
+                    'exclude_from_search'               => false,
+                    'rewrite' 				=> array( 'slug' => 'deals' ),
+                    'supports' 				=> array( 'title', 'editor', 'excerpt', 'thumbnail', 'comments', 'custom-fields' ),
+                    'show_in_nav_menus'                 => false,
+                    'menu_icon'				=> DEALS_IMG . 'deals-icon.png'                    
+            )
+    );
+    
+    register_post_type( "deals-sales",
+            array(
+                    'labels' => array(
+                            'name' 			=> __( 'Sales', 'wpdeals' ),
+                            'singular_name' 		=> __( 'Sale', 'wpdeals' ),
+                            'add_new' 			=> __( 'Add Sale', 'wpdeals' ),
+                            'add_new_item' 		=> __( 'Add New Sale', 'wpdeals' ),
+                            'edit' 			=> __( 'Edit', 'wpdeals' ),
+                            'edit_item' 		=> __( 'Edit Sale', 'wpdeals' ),
+                            'new_item' 			=> __( 'New Sale', 'wpdeals' ),
+                            'view' 			=> __( 'View Sale', 'wpdeals' ),
+                            'view_item' 		=> __( 'View Sale', 'wpdeals' ),
+                            'search_items' 		=> __( 'Search Sales', 'wpdeals' ),
+                            'not_found' 		=> __( 'No Sales found', 'wpdeals' ),
+                            'not_found_in_trash' 	=> __( 'No Sales found in trash', 'wpdeals' ),
+                            'parent' 			=> __( 'Parent Sale', 'wpdeals' )
+                    ),
+                    'description' 			=> __( 'Stored and manage all sales data transaction.', 'wpdeals' ),
+                    'public' 				=> true,
+                    'show_ui' 				=> true,
+                    'publicly_queryable'                => false,
+                    'capabilities' => array(
+                            'publish_posts' 		=> 'manage_deals',
+                            'edit_posts' 		=> 'manage_deals',
+                            'edit_others_posts' 	=> 'manage_deals',
+                            'delete_posts' 		=> 'manage_deals',
+                            'delete_others_posts'	=> 'manage_deals',
+                            'read_private_posts'	=> 'manage_deals',
+                            'edit_post' 		=> 'manage_deals',
+                            'delete_post' 		=> 'manage_deals',
+                            'read_post' 		=> 'manage_deals'
+                    ),
+                    'exclude_from_search'               => true,
+                    'show_ui'                           => true,
+                    'show_in_menu'                      => 'wpdeals',
+                    'show_in_nav_menus'                 => false,
+                    'rewrite'                           => false,
+                    'query_var'                         => true,
+                    'has_archive'                       => false,
+                    'capability_type'                   => 'post',
+                    'hierarchical'                      => false,
+                    'supports'                          => array( 'title' ),
+                    'menu_icon'				=> DEALS_IMG . 'deals-icon.png' 
+            )
+    );
+            
+}
+
+/**
+ * Register custom taxonomy
+ * deal categories
+ * deal tags
+ * 
+ * @return void
+ */
+function deals_register_taxonomy() {
+    
+    //arguments for custom taxonomy > deal categories
+    register_taxonomy('deal-categories', 'daily-deals', array(
+            'labels'            => array(
+            'name'              => __( 'Deal Categories', 'wpdeals' ),
+            'singular_name'     => __( 'Deal Category', 'wpdeals' ),
+            'search_items'      => __( 'Deal Search Category', 'wpdeals' ),
+            'all_items'         => __( 'All Deal Categories', 'wpdeals' ),
+            'edit_item'         => __( 'Edit Deal Category', 'wpdeals' ),
+            'update_item'       => __( 'Update Deal Category', 'wpdeals' ),
+            'add_new_item'      => __( 'Add Deal Category', 'wpdeals' ),
+            'new_item_name'     => __( 'New Deal Category', 'wpdeals' )
+        ),
+        'public'                => true,
+        'show_ui'               => true,
+        'show_tagcloud'         => true,
+        'hierarchical'          => true,
+        'rewrite'               => array(
+            'slug'              => 'deal-categories',
+            'hierarchical'      => true
+        )
+    ));
+
+    //arguments for custom taxonomy > deal tags
+    register_taxonomy('deal-tags', 'daily-deals', array(
+            'labels'            => array(
+            'name'              => __( 'Deal Tags', 'wpdeals' ),
+            'singular_name'     => __( 'Deal Tag', 'wpdeals' ),
+            'search_items'      => __( 'Deal Search Tag', 'wpdeals' ),
+            'all_items'         => __( 'All Deal Tags', 'wpdeals' ),
+            'edit_item'         => __( 'Edit Deal Tag', 'wpdeals' ),
+            'update_item'       => __( 'Update Deal Tag', 'wpdeals' ),
+            'add_new_item'      => __( 'Add Deal Tag', 'wpdeals' ),
+            'new_item_name'     => __( 'New Deal Tag', 'wpdeals' )
+        ),
+        'public'                => true,
+        'show_ui'               => true,
+        'show_tagcloud'         => true,
+        'hierarchical'          => false,
+        'rewrite'               => array(
+            'slug'              => 'deal-tags',
+            'hierarchical'      => false
+        )
+    ));
+    
+}
+
+
+/**
+ * Set up Roles & Capabilities
+ **/
+function deals_init_roles() {
+	global $wp_roles;
+
+	if (class_exists('WP_Roles')) if ( ! isset( $wp_roles ) ) $wp_roles = new WP_Roles();	
+	
+	if (is_object($wp_roles)) :
+		
+		// Customer role
+		add_role('customer', __('Customer', 'wpdeals'), array(
+		    'read' 					=> true,
+		    'edit_posts' 				=> false,
+		    'delete_posts' 				=> false
+		));
+	
+		// Shop manager role
+		add_role('deals_manager', __('Deals Manager', 'wpdeals'), array(
+		    'read' 				=> true,
+		    'read_private_pages'		=> true,
+		    'read_private_posts'		=> true,
+		    'edit_posts' 			=> true,
+		    'edit_pages' 			=> true,
+		    'edit_published_posts'		=> true,
+		    'edit_published_pages'		=> true,
+		    'edit_private_pages'		=> true,
+		    'edit_private_posts'		=> true,
+		    'edit_others_posts' 		=> true,
+		    'edit_others_pages' 		=> true,
+		    'publish_posts' 			=> true,
+		    'publish_pages'			=> true,
+		    'delete_posts' 			=> true,
+		    'delete_pages' 			=> true,
+		    'delete_private_pages'		=> true,
+		    'delete_private_posts'		=> true,
+		    'delete_published_pages'            => true,
+		    'delete_published_posts'            => true,
+		    'delete_others_posts' 		=> true,
+		    'delete_others_pages' 		=> true,
+		    'manage_categories' 		=> true,
+		    'manage_links'			=> true,
+		    'moderate_comments'			=> true,
+		    'unfiltered_html'			=> true,
+		    'upload_files'			=> true,
+		   	'export'			=> true,
+			'import'			=> true,
+			'manage_deals'                  => true
+		));
+		
+		// Main Shop capabilities for admin
+		$wp_roles->add_cap( 'administrator', 'manage_deals' );
+	endif;
+}
+
+// register
+add_action('init', 'deals_register_posttype'); //register custom post type
+add_action('init', 'deals_register_taxonomy'); //register custom taxonomy
+add_action('init', 'deals_init_roles');
+
 /*
  set global status    
  */
@@ -48,7 +253,7 @@ $pageAuto = array(
         'post_option_id' => $deals_featured_page_id,
         'post_option_name' => 'deals_page_featured_id',
         'title' => 'Featured Deal',
-        'content' => ''
+        'content' => '[wpdeals_featured]'
     ),
     'wpdeals_thanks' => array(
         'post_option_id' => $deals_thanks_page_post_id,
@@ -193,9 +398,9 @@ function deals_init_create_tables() {
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php'); // include upgrade wpdb.
     foreach ($tables as $tableName => $tableSql) {
         
-        if (($wpdb->get_var("SHOW TABLES LIKE '" . $tableName ."'")) != $tableName) {
+        if (($wpdb->get_var($wpdb->prepare("SHOW TABLES LIKE '" . $tableName ."'"))) != $tableName) {
             //dbDelta($tableSql);
-            $wpdb->query($tableSql);
+            $wpdb->query($wpdb->prepare($tableSql));
         }
     }    
 }
@@ -218,43 +423,49 @@ register_deactivation_hook(DEALS_PLUGIN_FILE,'deals_init_disable_page');
  * For enqueue js
  */
 function deals_js(){
+    global $pagenow;
         
     if(is_admin()){
         // register
-        wp_register_script('wp-deals-js', DEALS_JS . "wp-deals.js", '', null);
-        wp_register_script('jlivequery', DEALS_JS . "jquery.livequery.js", '', null);
-        wp_register_script('jqplot-excanvas', DEALS_JS . "excanvas.min.js", '', null);
-        wp_register_script('jqplot-date', DEALS_JS . "jqplot.dateAxisRenderer.min.js", '', null);
-        wp_register_script('jqplot-log-axis', DEALS_JS . "jqplot.logAxisRenderer.min.js", '', null);
-        wp_register_script('jqplot-canvas-axis', DEALS_JS . "jqplot.canvasAxisLabelRenderer.min.js", '', null);
-        wp_register_script('jqplot-canvas-text', DEALS_JS . "jqplot.canvasTextRenderer.min.js", '', null);
-        wp_register_script('jqplot-canvas-tick', DEALS_JS . "jqplot.canvasAxisTickRenderer.min.js", '', null);
-        wp_register_script('jqplot', DEALS_JS . "jquery.jqplot.min.js", '', null);
+        wp_register_script('deals-js', DEALS_JS . "wp-deals.js", '', null);
+        wp_register_script('deals-jlivequery', DEALS_JS . "jquery.livequery.js", '', null);
         
         // enqueue
         wp_enqueue_script( 'jquery' );
-        wp_enqueue_script( 'jlivequery' );        
-        wp_enqueue_script( 'wp-deals-js' );
-        wp_enqueue_script( 'jqplot' );
-        wp_enqueue_script( 'jqplot-excanvas' );
-        wp_enqueue_script( 'jqplot-date' );
-        wp_enqueue_script( 'jqplot-log-axis' );
-        wp_enqueue_script( 'jqplot-canvas-axis' );
-        wp_enqueue_script( 'jqplot-canvas-text' );
-        wp_enqueue_script( 'jqplot-canvas-tick' );
+        wp_enqueue_script( 'deals-jlivequery' );        
+        wp_enqueue_script( 'deals-js' );
+        
+        // just reports page
+        if(is_admin() AND $pagenow == 'deal-stats'){
+                wp_register_script('deals-jqplot-excanvas', DEALS_JS . "excanvas.min.js", '', null);
+                wp_register_script('deals-jqplot-date', DEALS_JS . "jqplot.dateAxisRenderer.min.js", '', null);
+                wp_register_script('deals-jqplot-log-axis', DEALS_JS . "jqplot.logAxisRenderer.min.js", '', null);
+                wp_register_script('deals-jqplot-canvas-axis', DEALS_JS . "jqplot.canvasAxisLabelRenderer.min.js", '', null);
+                wp_register_script('deals-jqplot-canvas-text', DEALS_JS . "jqplot.canvasTextRenderer.min.js", '', null);
+                wp_register_script('deals-jqplot-canvas-tick', DEALS_JS . "jqplot.canvasAxisTickRenderer.min.js", '', null);
+                wp_register_script('deals-jqplot', DEALS_JS . "jquery.jqplot.min.js", '', null);
+                
+                wp_enqueue_script( 'deals-jqplot' );
+                wp_enqueue_script( 'deals-jqplot-excanvas' );
+                wp_enqueue_script( 'deals-jqplot-date' );
+                wp_enqueue_script( 'deals-jqplot-log-axis' );
+                wp_enqueue_script( 'deals-jqplot-canvas-axis' );
+                wp_enqueue_script( 'deals-jqplot-canvas-text' );
+                wp_enqueue_script( 'deals-jqplot-canvas-tick' );
+        }
         
     } else {
         
         // register
-        wp_register_script('jquery-countdown', DEALS_JS . "jquery.countdown.min.js", '', null);
-        wp_register_script('wp-deals-front', DEALS_JS . "wp-deals-front.js", '', null, true);
-        wp_register_script('fancybox', DEALS_JS . "jquery.fancybox-1.3.4.pack.js", '', null, true);
+        wp_register_script('deals-jquery-countdown', DEALS_JS . "jquery.countdown.min.js", '', null);
+        wp_register_script('deals-front', DEALS_JS . "wp-deals-front.js", '', null, true);
+        wp_register_script('deals-fancybox', DEALS_JS . "jquery.fancybox-1.3.4.pack.js", '', null, true);
         
         // enqueue
         wp_enqueue_script( 'jquery' ); 
-        wp_enqueue_script( 'jquery-countdown' );      
-        wp_enqueue_script( 'wp-deals-front' );
-        wp_enqueue_script( 'fancybox' ); 
+        wp_enqueue_script( 'deals-jquery-countdown' );      
+        wp_enqueue_script( 'deals-front' );
+        wp_enqueue_script( 'deals-fancybox' ); 
     }
     
 }
@@ -279,59 +490,26 @@ function deals_styles(){
         
     if(!is_admin()){
         // register
-        wp_register_style('wp-deals', DEALS_CSS . "wp-deals.css", '', null);
-        wp_register_style('fancybox', DEALS_CSS . "jquery.fancybox-1.3.4.css", '', null);        
+        wp_register_style('deals', DEALS_CSS . "wp-deals.css", '', null);
+        wp_register_style('deals-fancybox', DEALS_CSS . "jquery.fancybox-1.3.4.css", '', null);        
         
         // enqueue
-        wp_enqueue_style( 'wp-deals' ); 
-        wp_enqueue_style( 'fancybox' );        
+        if(deals_get_option('use_style', 1) == 1) wp_enqueue_style( 'deals' ); 
+        wp_enqueue_style( 'deals-fancybox' );        
         
     }else{
         
-        wp_register_style('wp-deals-admin', DEALS_CSS . "wp-deals-admin.css", '', null);
-        wp_register_style('jquery.jqplot', DEALS_CSS . "jquery.jqplot.css", '', null);
+        wp_register_style('deals-admin', DEALS_CSS . "wp-deals-admin.css", '', null);
+        wp_register_style('deals-jquery.jqplot', DEALS_CSS . "jquery.jqplot.css", '', null);
         
-        wp_enqueue_style( 'wp-deals-admin' );
-        wp_enqueue_style( 'jquery.jqplot' );
+        wp_enqueue_style( 'deals-admin' );
+        wp_enqueue_style( 'deals-jquery.jqplot' );
         
     }
     
 }
 add_action('init', 'deals_styles');
 
-/**
- * register admin menus
- *
- * @return void
- */
-function deals_register_admin_menus() {
-    
-    if(is_admin()) {
-        
-        require_once 'deals_sales_report.php';
-        require_once 'deals_invoice_report.php';
-        require_once 'deals_subscribers.php';
-        require_once 'deals-stats/deals_stats.php';
-        
-        add_submenu_page('edit.php?post_type=daily-deals',
-                'Deal Sales','Sales','manage_options','deal-sales','deals_sales_report');
-        add_submenu_page('edit.php?post_type=daily-deals',
-                'Deal Invoices','Invoices','manage_options','deal-invoices','deals_invoice_report');
-        add_submenu_page(null,
-                'Deal Sales Detail','Sale Details','manage_options','deal-sales-detail','deals_sales_detail');
-        add_submenu_page(null,
-                'Deal Invoice Detail','Invoice Details','manage_options','deal-invoice-detail','deals_invoice_detail');
-        add_submenu_page(null,
-                'Deal Invoice Preview','Invoice Preview','manage_options','deal-invoice-preview','deals_invoice_preview');
-        add_submenu_page('edit.php?post_type=daily-deals',
-                'Deal Subscribers','Subscribers','manage_options','deal-subscribers','deals_subscribers');
-        add_submenu_page('edit.php?post_type=daily-deals',
-                'Deal Statistics','Reports','manage_options','deal-stats','deals_stats');                                
-        
-    }
-    
-}
-add_action('admin_menu','deals_register_admin_menus');
 
 /**
  *
@@ -365,74 +543,14 @@ function deals_exclude_pages($pages) {
 add_filter('get_pages','deals_exclude_pages');
 
 
-/**
- * WP Deals Templates
- * 
- * Handles template usage so that we can use our own templates instead of the theme's.
- *
- * Templates are in the 'deals-templates' folder. deals looks for theme 
- * overides in /theme/deals/ by default  but this can be overwritten with DEALS_DIR
- *
- * @package	WP Deals
- * @category	Core
- */
-function deals_template_loader( $template ) {
-	
-	$buy_id = get_query_var('deal_buy_id');
-        
-        if($buy_id){
-            
-		$wp_nonce = $_REQUEST['_wpnonce'];
-		
-                $plugin_template_buy            = DEALS_TEMPLATE_DIR . 'form/wp-deals-buy.php';
-		$plugin_template_buy_invalid    = DEALS_TEMPLATE_DIR . 'form/wp-deals-buy-invalid.php';
-                $plugin_template_form           = DEALS_TEMPLATE_DIR . 'form/wp-deals-form.php';
-                
-                if(is_user_logged_in())
-		
-			if(wp_verify_nonce($wp_nonce,'buy-button')) {
-				$template   = $plugin_template_buy;
-			}else{
-				$template = $plugin_template_buy_invalid;
-			}
-			
-                else
-                    $template   = $plugin_template_form;
-        
-        }elseif ( is_single() && get_post_type() == 'daily-deals' ) {
-            		
-		$template = locate_template( array( 'single-deal.php', DEALS_TEMPLATE_DIR . 'single-deal.php' ) );
-		
-		if ( ! $template ) $template = DEALS_TEMPLATE_DIR . 'single-deal.php';
-		
-	}elseif ( is_tax('deal-categories') ) {
-		
-		$template = locate_template(  array( 'taxonomy-deal_cat.php', DEALS_TEMPLATE_DIR . 'taxonomy-deal_cat.php' ) );
-		
-		if ( ! $template ) $template = DEALS_TEMPLATE_DIR . 'taxonomy-deal_cat.php';
-	}elseif ( is_tax('deal-tags') ) {
-		
-		$template = locate_template( array( 'taxonomy-deal_tag.php', DEALS_TEMPLATE_DIR . 'taxonomy-deal_tag.php' ) );
-		
-		if ( ! $template ) $template = DEALS_TEMPLATE_DIR . 'taxonomy-deal_tag.php';
-	}elseif (is_page( get_option('deals_page_featured_id') )) { // get page id featured deal
+//install pear
+deals_install_path(DEALS_VENDOR_DIR.'pear');
+deals_install_path(DEALS_VENDOR_DIR.'pear/PEAR');
+deals_install_path(DEALS_VENDOR_DIR.'pear/PEAR/Image');
+deals_install_path(DEALS_VENDOR_DIR.'pear/PEAR/Image/Barcode');
 
-		$template = locate_template( array( 'featured-deal.php', DEALS_TEMPLATE_DIR . 'featured-deal.php' ) );
-		
-		if ( ! $template ) $template = DEALS_TEMPLATE_DIR . 'featured-deal.php';
-                
-        }elseif ( is_post_type_archive('daily-deals') ||  is_page( get_option('deals_page_post_id') )) {
+//install libs path
+deals_install_path(DEALS_PLUGIN_PATH.'deals-assets/libs');
 
-		$template = locate_template( array( 'archive-deal.php', DEALS_TEMPLATE_DIR . 'archive-deal.php' ) );
-		
-		if ( ! $template ) $template = DEALS_TEMPLATE_DIR . 'archive-deal.php';
-		
-	}
-        
-        return $template;
-
-}
-add_filter( 'template_include', 'deals_template_loader' );
-
-// admin bar not showing for user default (just administrator).
-add_filter('show_admin_bar', '__return_false');
+//install fpdf
+deals_install_path(DEALS_VENDOR_DIR.'fpdf');

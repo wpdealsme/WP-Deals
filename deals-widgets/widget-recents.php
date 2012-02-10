@@ -75,7 +75,7 @@ class Deals_Recent_Widget extends WP_Widget {
 			'post_status'       => 'publish',
                         'post_type'         => 'daily-deals',
                         'orderby'           => 'meta_value',
-                        'meta_key'          => 'is_expired',
+                        'meta_key'          => '_is_expired',
                         'meta_value'        => 'no',
 		);
 		$recents = new WP_Query( $recents_args );

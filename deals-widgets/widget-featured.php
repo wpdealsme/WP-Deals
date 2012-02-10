@@ -75,7 +75,7 @@ class Deals_Featured_Widget extends WP_Widget {
 			'post_status'       => 'publish',
                         'post_type'         => 'daily-deals',
                         'post__in'          => $featured_deals,
-                        'meta_key'          => 'is_expired',
+                        'meta_key'          => '_is_expired',
                         'meta_value'        => 'no',
 		);
 		$featured = new WP_Query( $featured_args );

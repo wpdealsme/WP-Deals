@@ -49,3 +49,31 @@
 	background: transparent url(../images/print.png);
 	margin-left: 0;
 }
+
+/* options */
+#subtab-options {
+        margin: 10px 0 30px;
+        border-bottom: 1px dotted #CCC;
+        line-height: 20px;
+}
+#subtab-options a {
+        text-decoration: none;
+}
+#subtab-options a.active {
+        font-weight: bold;
+        color: #333;
+}
+
+/* deal post */
+.form-field label {
+        float: left;
+        width: 125px;
+        margin-top: 4px;
+}
+.form-field .short {
+        width: 25%;
+        margin: 0;
+}
+.form-field input[type="button"] {
+width: auto;
+}
