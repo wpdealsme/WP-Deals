@@ -359,14 +359,14 @@ h1.deal-title{
 .deals-error {
         background: #FFE7A1;
         border: 1px solid #D55C2B;
-        padding: 2px 10px;
-        margin-bottom: 10px;
 }
 .deals-message {
         background: #DBF6BE;
         border: 1px solid #008000;
-        padding: 2px 10px;
-        margin-bottom: 10px;
+}
+.deals-error, .deals-message{
+        width: 400px;
+        padding: 20px 10px;
 }
 .deals-error p, .deals-message p.success {
         margin: 0;
@@ -620,6 +620,14 @@ http://www.queness.com/post/1696/create-a-beautiful-looking-custom-dialog-box-wi
 /*	Modal popup
 /*-----------------------------------------------------------------------------------*/
 
+
+#subscribe_deals {
+    overflow: auto;
+	width: 500px;
+	height: auto;
+	background-color: #FDFDFD;
+}
+/*
 #subscribe_deals {
     position: absolute;
     left: 0px;
@@ -632,7 +640,7 @@ http://www.queness.com/post/1696/create-a-beautiful-looking-custom-dialog-box-wi
 	-moz-opacity: 0;
 	-khtml-opacity: 0;
 	opacity: 0;
-}
+}*/
 
 #subscribe_deals #modal-overlay, #subscribe_deals .modal-overlay {
 	width: 100%;
@@ -678,7 +686,7 @@ http://www.queness.com/post/1696/create-a-beautiful-looking-custom-dialog-box-wi
 }
 
 #subscribe_deals #subs-container, #subscribe_deals .subs-container {
-	padding: 10px 0 30px;
+	padding: 10px 0 0;
 	position: relative;
 	overflow:hidden;
 }
@@ -696,12 +704,12 @@ http://www.queness.com/post/1696/create-a-beautiful-looking-custom-dialog-box-wi
 }
 
 #subscribe_deals .modal-icon span.email {
-	background: url(../images/sprite.png) no-repeat -362px -183px;
+	background: url(../images/sprite.png) no-repeat center top;
 	display: block;
 	height: 54px;
 	width: 72px;
  }
-#subscribe_deals .modal-icon span:hover.email { background: url(../images/sprite.png) no-repeat -362px -238px; }
+#subscribe_deals .modal-icon span:hover.email { background: url(../images/sprite.png) no-repeat center bottom; }
 
 #subscribe_deals .modal-download h4,
 #subscribe_deals .modal-download h4 a {

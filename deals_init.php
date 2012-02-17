@@ -236,7 +236,8 @@ $pageAuto = array(
         'post_option_id' => $deals_page_post_id,
         'post_option_name' => 'deals_page_post_id',
         'title' => 'Daily Deals',
-        'content' => '[wpdeals]'),
+        'content' => '[wpdeals]'
+    ),
     'wpdeals_user_profile' => array(
         'post_option_id' => $deals_user_profile_id,
         'post_option_name' => 'deals_page_profile_id',

@@ -13,9 +13,6 @@ require_once( $paypal_wp_url . '/wp-load.php' );
 //paypal functions
 require_once 'paypal_functions.php';
 
-//load paypal query
-require_once 'paypal_query.php';
-
 //get paypal test option
 $option_sandbox = get_option('deals_paypal_sandbox');
 $paypal_test = $option_sandbox == 1 ? true : false;
@@ -41,13 +38,19 @@ if($confirm_paypal_transaction) {
     require_once DEALS_PAYMENT_DIR.'default/class-payment-paypal.php';
         
     $user_id = $_GET['user_id'];
-    $sale_id = get_option('_deals_sales_used');    
+    $item_id = $_GET['item_id'];
+    
+    $sale_id = get_option('_deals_sales_used_'.$item_id.'_'.$user_id.'_paypal');    
     paypal_log($sale_id);    
     
-    $paypalClass = new Payment_Default();    
+    $paypalClass = new Payment_Paypal();
+    
+    $check_class = is_a($paypalClass,'Payment_Paypal') ? '$paypalClass is Payment_Paypal' : '$paypalClass not object';
+    paypal_log($check_class);
+    
     $paypalClass->update_transaction_data($sale_id);
     $paypalClass->send_invoice();
     
-    delete_option('_deals_sales_used');
+    delete_option('_deals_sales_used_'.$item_id.'_'.$user_id.'_paypal');
     
 }

@@ -110,9 +110,12 @@ function deals_thanks_deal(){
     
     global $wpdb;
     
-    if (is_page(get_option('deals_page_thanks_post_id')) ) {        
+    if (is_page(get_option('deals_page_thanks_post_id')) ) {
         
-		if(!isset($_REQUEST) || !isset($_GET['item_id']) || !isset($_GET['user_id'])) {
+                if(isset($_GET['payment_method']) && $_GET['payment_method'] != ''){
+                    $payment_method = $_GET['payment_method'];
+                    return apply_filters('deals_payment_message', $payment_method);
+                }elseif(!isset($_REQUEST) || !isset($_GET['item_id']) || !isset($_GET['user_id'])) {
 			return __('Invalid Request', 'wpdeals');
 		}else{
 						

@@ -21,76 +21,91 @@ function deals_template_loader( $template ) {
 	
 	$buy_id = get_query_var('deal_buy_id');
         
-        if($buy_id){
-            
-			$wp_nonce = $_REQUEST['_wpnonce'];
-		
-			require_once DEALS_PAYMENT_DIR.'class-payments.php';
-			require_once DEALS_PAYMENT_DIR.'abstract-payment-gateway.php';
-
-			//create payment object
-			$payment = Payments::get_instance();						
+        if($buy_id && !isset($_GET['payment_method']) && $_GET['payment_method'] == ''){
 			
-			//load payments option hook
-			$gateways = $payment->core('Gateways');
-			if(!isset($_GET['payment_id'])) {
-				$payment_method = $gateways->default_payment()->id;
-				$plugin_template_buy = $gateways->default_payment()->get_payment_template();				
-			}else{
-				$payment_method = $_GET['payment_id'];
-				$payment_choosen = $gateways->choosen($_GET['payment_id']);
-				if(!is_null($payment_choosen)) {
-					$plugin_template_buy = $payment_choosen->get_payment_template();
-				}else{
-					wp_die(__('invalid security check', 'wpdeals'));
-                                        exit;
-				}
-				
-			}
+                $wp_nonce = $_GET['_wpnonce'];
                 
-			if(is_user_logged_in()):
-			
-				//save sales transaction
-				$time = time();
-				$sales_data = array();
-				$sales_data['post_title'] = $time;
-				$sales_data['post_status'] = 'draft';
-				$sales_data['post_type'] = 'deals-sales';
-				$sales_id = wp_insert_post($sales_data);
-				
-				if(!is_wp_error($sales_id) || $sales_id > 0) {
-					
-					$updated_sales = array();
-					$updated_sales['ID'] = $sales_id;
-					$updated_sales['post_title'] = __('Sales ID #', 'wpdeals').$sales_id;
-					$updated_sales['post_status'] = 'publish';
-					wp_update_post($updated_sales);
-					
-					$itemdata = get_post($buy_id);
-					$itemprice = get_post_meta($buy_id,'_discount_price',true);
-					
-					update_post_meta($sales_id,'_deals_sales_user_id',$current_user->ID);
-					update_post_meta($sales_id,'_deals_sales_user_name',$current_user->user_login);
-					update_post_meta($sales_id,'_deals_sales_item_id',$buy_id);
-					update_post_meta($sales_id,'_deals_sales_item_name',$itemdata->post_title);
-					update_post_meta($sales_id,'_deals_sales_amount',$itemprice);
-					update_post_meta($sales_id,'_deals_sales_payment_method',$payment_method);
-					update_post_meta($sales_id,'_deals_sales_transaction_status','pending');
-					update_option('_deals_sales_used',$sales_id);
-					
-				}
-	
-				if(wp_verify_nonce($wp_nonce,'buy-button')) {
-					$template   = $plugin_template_buy;
-				}else{
-					wp_die(__('invalid security check', 'wpdeals'));
-                                        exit;
-				}
-		
-			else:
-                                wp_safe_redirect( get_permalink(get_option('deals_page_profile_id')) );
+                require_once DEALS_PAYMENT_DIR.'class-payments.php';
+                require_once DEALS_PAYMENT_DIR.'abstract-payment-gateway.php';
+
+                //create payment object
+                $payment = Payments::get_instance();
+				$payment_used = get_option('deals_payments');
+
+                //load payments option hook
+                $gateways = $payment->core('Gateways');
+                if(!isset($_GET['payment_id'])) {
+
+                        $get_available = $gateways->get_available();						
+                        $payment_id = $get_available[0];
+						$payment_method = $payment_used[$payment_id]['name'];
+						$plugin_template_buy = $gateways->get_class($payment_id)->get_payment_template();			
+
+                }else{
+						$payment_id = $_GET['payment_id'];
+                        $payment_method = $payment_used[$_GET['payment_id']]['name'];
+                        $payment_choosen = $gateways->choosen($_GET['payment_id']);
+                        if(!is_null($payment_choosen)) {
+                                $plugin_template_buy = $payment_choosen->get_payment_template();
+                        }else{
+                                wp_die(__('invalid security check', 'wpdeals'));
                                 exit;
-			endif;
+                        }
+
+                }
+				
+                if(is_user_logged_in()):
+
+                        $option_sale_id = '_deals_sales_used_'.$buy_id.'_'.$current_user->ID.'_'.$payment_id;                        
+                        $sale_id_before = get_option($option_sale_id, '');
+
+                        if( $sale_id_before == '' ) {
+
+                                //save sales transaction
+                                $time = time();
+                                $sales_data = array();
+                                $sales_data['post_title'] = $time;
+                                $sales_data['post_status'] = 'draft';
+                                $sales_data['post_type'] = 'deals-sales';
+                                $sales_id = wp_insert_post($sales_data);
+
+                                if(!is_wp_error($sales_id) && $sales_id > 0) {
+
+                                        $updated_sales = array();
+                                        $updated_sales['ID'] = $sales_id;
+                                        $updated_sales['post_title'] = __('Sales ID #', 'wpdeals').$sales_id;
+                                        $updated_sales['post_status'] = 'publish';
+                                        wp_update_post($updated_sales);
+
+                                        $itemdata = get_post($buy_id);
+                                        $itemprice = get_post_meta($buy_id,'_discount_price',true);
+
+                                        update_post_meta($sales_id,'_deals_sales_user_id',$current_user->ID);
+                                        update_post_meta($sales_id,'_deals_sales_user_name',$current_user->user_login);
+                                        update_post_meta($sales_id,'_deals_sales_item_id',$buy_id);
+                                        update_post_meta($sales_id,'_deals_sales_item_name',$itemdata->post_title);
+                                        update_post_meta($sales_id,'_deals_sales_amount',$itemprice);
+                                        update_post_meta($sales_id,'_deals_sales_payment_method',$payment_method);
+                                        update_post_meta($sales_id,'_deals_sales_transaction_status','pending');
+
+                                        update_option($option_sale_id,$sales_id);
+                                        do_action('deals_sales_id_action',$option_sale_id);
+
+                                }
+
+                        }														
+
+                        if(wp_verify_nonce($wp_nonce,'buy-button')) {
+                                $template   = $plugin_template_buy;
+                        }else{
+                                wp_die(__('invalid security check', 'wpdeals'));
+                                exit;
+                        }
+
+                else:
+                        wp_safe_redirect( get_permalink(get_option('deals_page_profile_id')) );
+                        exit;
+                endif;
         
         }elseif ( is_single() && get_post_type() == 'daily-deals' ) {
             		
@@ -134,28 +149,23 @@ add_filter( 'template_include', 'deals_template_loader' );
 function deals_display_popup_single(){
         if(is_singular('daily-deals') AND deals_is_free()):
         ?>
-                <!-- popup form -->    
+                <!-- popup form -->
+                <div style="display:none">
                 <div id="subscribe_deals">
-                        <div class="modal-overlay"></div>
+                        <h2 class="modal-title"><?php _e('Download Form', 'wpdeals'); ?></h2>
+                        <h3 class="modal-tagline"><?php _e('Enter your email below, for the download link.', 'wpdeals'); ?></h3>
 
-                        <div class="modal-container">
-                                <div class="modal-bg">
-                                        <div class="modal-close"><a href=""><?php _e('Close', 'wpdeals'); ?></a></div>
-                                        <h2 class="modal-title"><?php _e('Download Form', 'wpdeals'); ?></h2>
-                                        <h3 class="modal-tagline"><?php _e('Enter your email below, for the download link.', 'wpdeals'); ?></h3>
-
-                                        <div class="subs-container clearfix">
-                                                <div class="modal-download">
-                                                        <div class="modal-icon">
-                                                                <span class="email"><?php _e('Download here', 'wpdeals'); ?></span>
-                                                        </div>
-                                                        <h4><?php _e('Enter your email', 'wpdeals'); ?></h4>
-                                                        <h5><?php _e('Check your INBOX or SPAM folder.', 'wpdeals'); ?></h5> 
-                                                        <?php deals_form_subscribe(array('idform' => 'free-deals', 'free' => true, 'text' => 'Give Me!')); ?>
-                                                </div>
+                        <div class="subs-container clearfix">
+                                <div class="modal-download">
+                                        <div class="modal-icon">
+                                                <span class="email"><?php _e('Download here', 'wpdeals'); ?></span>
                                         </div>
+                                        <h4><?php _e('Enter your email', 'wpdeals'); ?></h4>
+                                        <h5><?php _e('Check your INBOX or SPAM folder.', 'wpdeals'); ?></h5> 
+                                        <?php deals_form_subscribe(array('idform' => 'free-deals', 'free' => true, 'text' => 'Give Me!')); ?>
                                 </div>
                         </div>
+                </div>
                 </div>
     <?php
         endif;
@@ -204,6 +214,8 @@ function deals_body_class($classes) {
         if (is_history()) $deals_body_classes[] = 'wpdeals-history';
         
         if (is_deal() || is_feature_deal()) $deals_body_classes[] = 'wpdeals-single';
+        
+        if (is_deals_page()) $deals_body_classes[] = 'wpdeals-archives';
 	
 	if ( is_account_deal() || is_history() || is_deals_page() || is_thanks() ) $deals_body_classes[] = 'wpdeals-page';	
 	
@@ -261,19 +273,49 @@ function deals_get_current_url( $remove_tag = ''){
 
 /**
  * Get buy permalink url
- * 
- * @global object $wp_rewrite
- * @param int $id
- * @return string
+ *
+ * @global object $post
+ * @global type $wp_rewrite
+ * @param type $type
+ * @return type 
  */
 function deals_get_view_type($type = 'list') {
 
         global $post, $wp_rewrite;
 
-        if ( !$wp_rewrite->using_permalinks() || is_admin() )
-                $result = deals_get_current_url('view_type') . '&view_type='.$type;  
-        else
-                $result = deals_get_current_url('view_type') . '?view_type=' . $type;
+        $pagenum = (int) $pagenum;
+
+        $request = remove_query_arg( 'view_type' );
+
+        $home_root = parse_url(home_url());
+        $home_root = ( isset($home_root['path']) ) ? $home_root['path'] : '';
+        $home_root = preg_quote( trailingslashit( $home_root ), '|' );
+
+        $request = preg_replace('|^'. $home_root . '|', '', $request);
+        $request = preg_replace('|^/+|', '', $request);
+
+        if ( !$wp_rewrite->using_permalinks() || is_admin() ) {
+                $base = trailingslashit( get_bloginfo( 'url' ) );
+                $result = $base . $request . '&view_type='.$type;  
+        } else {
+                $qs_regex = '|\?.*?$|';
+                preg_match( $qs_regex, $request, $qs_match );
+
+                if ( !empty( $qs_match[0] ) ) {
+                        $query_string = $qs_match[0];
+                        $request = preg_replace( $qs_regex, '', $request );
+                } else {
+                        $query_string = '';
+                }
+
+                $request = preg_replace( "|view_type/\d+/?$|", '', $request);
+                $request = preg_replace( '|^index\.php|', '', $request);
+                $request = ltrim($request, '/');
+
+                $base = trailingslashit( get_bloginfo( 'url' ) );
+
+                $result = $base . $request . '?view_type=' . $type;
+        }
 
         $result = apply_filters('get_viewtype_link', $result);
 
@@ -295,18 +337,17 @@ function deals_form_subscribe($args = null){
     $args = wp_parse_args( (array)$args, array(
                 'idform'    => 'subscribe-form',
                 'text'      => 'Subscribe',
-                'free'      => false
+                'free'      => false,
+                'class'     => 'form-subscriber'
     ) );
         
     extract($args);
     
     if($free)
         $post_id = $post->ID;
-    
-    $deals_error->show_messages();
-    
+        
     ?>
-    <form id="<?php echo $idform; ?>" action="" method="post" class="form-subscriber clearfix">
+    <form id="<?php echo $idform; ?>" action="" method="post" class="<?php echo $class; ?> clearfix">
             <input type="email" name="email" id="form_email" placeholder="<?php _e('Enter Email Address', 'wpdeals'); ?>" />
             <input type="submit" name="submit_form" value="<?php echo $text; ?>" />
             <?php wp_nonce_field('deals_process_subscribe', '_subscribe', false); ?>
@@ -347,7 +388,7 @@ function deals_button( $args = array() ){
     'free_close'        => null,
     'buy_open'          => null,
     'buy_close'         => null,
-    'link_free_class'   => 'buy-button free',
+    'link_free_class'   => 'buy-button',
     'link_buy_class'    => 'buy-button',
     'text_buy'          => 'Buy now',
     'text_free'         => 'Free Download',
@@ -376,9 +417,10 @@ function deals_button( $args = array() ){
          if ( deals_is_free() ) :
 
             $link   = (is_deal())? '#subscribe_deals':get_permalink($post->ID);
+            $free_class = (is_deal())? $args->link_free_class.' free':$args->link_free_class;
 
             $output .= $args->free_open;
-            $output .= '<a href="'.$link.'" class="'.$args->link_free_class.'"><span>'.$args->text_free.'</span></a>';
+            $output .= '<a href="'.$link.'" class="'.$free_class.'"><span>'.$args->text_free.'</span></a>';
             $output .= $args->free_close;
 
         else: 

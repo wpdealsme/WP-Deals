@@ -434,6 +434,8 @@ function deals_remove_sticky($postid){
  */
 function deals_rewrite_buy($wp_rewrite) {                        
 
+	$page_id = get_option('deals_page_post_id');
+	
     if($page_id) {
 
         $deal_id_key = '%wpdealsid%';                          

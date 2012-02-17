@@ -27,15 +27,7 @@ class Payment_Gateways {
             return false;
         }
         
-    }
-    
-    public function default_payment() {
-        
-        require_once DEALS_PAYMENT_DIR.'default/class-payment-paypal.php';
-        $obj = new Payment_Default();
-        return $obj;
-        
-    }
+    }        
     
     public function get_class($id) {
         

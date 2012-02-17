@@ -2,7 +2,7 @@
 
 deals_secure();
 
-class Payment_Default extends Payment_Gateway_Abstract {
+class Payment_Paypal extends Payment_Gateway_Abstract {
     
     /**
      * @access public
@@ -84,5 +84,23 @@ class Payment_Default extends Payment_Gateway_Abstract {
         }
         
     }
+    
+}
+
+// add the payment method transfer bank
+add_filter('deals_payment_methods', 'gateway_paypal', 1);
+function gateway_paypal($methods) {
+    
+    $paypal = new Payment_Paypal();
+    
+    $avai_payments = array();
+    $avai_payments =  array(
+        'name' => $paypal->name,
+        'path' => $paypal->get_path()        
+    );        
+    
+    $methods[$paypal->id] = $avai_payments;
+    
+    return $methods;
     
 }

@@ -112,11 +112,10 @@ abstract class Payment_Gateway_Abstract {
             
             //sent to admin
             $admin_email = get_option('admin_email');
-            $admin_mail_subject = printf( __('Deal Transaction - Invoice - %s', 'wpdeals'), $item_post->post_title);
+            $admin_mail_subject = sprintf( __('Deal Transaction - Invoice - %s', 'wpdeals'), $itempost->post_title);
             $admin_mail_status = (wp_mail($admin_email,$admin_mail_subject,$mail_content,$headers) == true )? 'send':'error';
-        }
-        
-        deals_log($this->_sales_data);
+
+        }                
         
     }
     

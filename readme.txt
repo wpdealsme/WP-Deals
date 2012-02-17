@@ -1,9 +1,9 @@
 ﻿=== WP Deals ===
 Contributors: onnayokheng, tokokoo, wpdealsme
 Tags: wordpress, plugin, deals, wp deals, wordpress deals
-Requires at least: 3.0
+Requires at least: 3.3
 Tested up to: 3.3.1
-Stable tag: 1.1
+Stable tag: 1.1.1
 
 WP Deals is a special-for-deals plugin where you can make, post, and share deals all around the people.
 
@@ -12,6 +12,7 @@ WP Deals is a special-for-deals plugin where you can make, post, and share deals
 WP Deals is a special-for-deals plugin where you can make, post, and share deals all around the people just by downloading this plugin and make your own deals-site with it. WP Deals is one of Tokokoo’s network, so after downloading the plugin, then you can explore your site with the nice and gorgeous themes from WP Deals themes.
 
 = FEATURES =
+
 
 = DEALS =
 Quickly and easily create and edit your own deals offer, then assign categories (e.g. software, books, etc.) and tags (e.g. psd, icon, etc.) to your deal offerings.
@@ -93,7 +94,21 @@ If you would prefer to do things manually then follow these instructions:
 
 == Changelog ==
 
-= 1.1 =
+= 1.1.1 (2012-02-06) =
+* Add: body class wpdeals-archives
+* Add: Manual Payment with "Transfer bank"
+* Add: Filter for excerpt deals
+* Add: Multisite Support
+* Add: Currencies (Indonesia and India)
+* Modify: Error and Message display
+* Modify: "Payment Gateway" method
+* Modify: class Free for buy button
+* Modify: Popup form for Free Deals.
+* Fix: Buy now permalink
+* Fix: View Type permalink
+* Remove: File doc and tutorial library.
+
+= 1.1 (2012-02-09) =
 * Add: (grid/list) at front-end
 * Add: Set/unset  CSS style
 * Add: User Roles (Customer & Manager)
@@ -110,5 +125,5 @@ If you would prefer to do things manually then follow these instructions:
 * Fix: Upload file deals. now you can upload any files
 * Remove: Statistics Reports.
 
-= 1.0 =
+= 1.0 (2012-01-20) =
 * Initial release. Deals!

@@ -5,6 +5,8 @@ deals_secure();
 require_once 'abstract-payment-gateway.php';
 require_once 'class-payment-options.php';
 require_once 'class-payment-gateways.php';
+require_once 'default/class-payment-bank.php';
+require_once 'default/class-payment-paypal.php';
 
 class Payments {
     
@@ -56,14 +58,5 @@ class Payments {
     
 }
 
-
-//create payment object
-$payment = Payments::get_instance();
-
-//only load in admin page
-if(is_admin()) {
-    
-    //load payments option hook
-    $payment->core('Options')->register_hook_options();
-    
-}
+$payments = Payments::get_instance();
+$payments->core('Options')->register_hook_options();

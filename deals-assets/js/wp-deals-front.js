@@ -1,71 +1,33 @@
 // This is the wpdeals front end javascript "library"
 
-jQuery(document).ready(function(){    
-    
-        // fancybox for subscribe
-        /* jQuery(".free").fancybox({
-                'transitionIn'		: 'none',
-                'transitionOut'		: 'none'
-        });*/
+jQuery(document).ready(function(){  
         
         jQuery("a.fancy").fancybox({
 		'titleShow'     : false,
 		'transitionIn'	: 'elastic',
 		'transitionOut'	: 'elastic'
 	});
-	
-
-	
-	function deals_displayModal_free() {
-		
-		// variable calcs for centering the modal
-		var windowHeight = jQuery(window).height() / 2;
-		var modalHeight = jQuery('.modal-container').height() / 2;
-		var windowWidth = jQuery(window).width() / 2;
-		var modalWidth = jQuery('.modal-container').width() / 2;
-		
-		// set the containers position
-		jQuery('.modal-container').css({ 
-			marginTop	: 	windowHeight - modalHeight,
-			marginLeft	: 	windowWidth - modalWidth 
-		});
-		
-		//set the height to the documents height
-		jQuery('#subscribe_deals').height(jQuery(document).height());
-	
-		//disable sidebar
-		jQuery('body').css("overflow", "auto");
-		
-		//fade in the modal
-		jQuery('#subscribe_deals').animate({
-			opacity: 1,
-			zIndex: 10000
-		}, 300);
-		
-		jQuery('.modal-overlay').css({
-			zIndex : 500
-		});
-		
-		//exit modal on close, "f'of" link and background
-		jQuery('.modal-close a, a.destroy, .modal-overlay').click( function (e) {
-			
-			jQuery('#subscribe_deals, .modal-overlay').animate({ opacity: 0 }, 300, function () {
-				jQuery('body').css("overflow", "auto");
-				jQuery(this).remove(); 
-				jQuery('.result p.success').remove(); 
-			});
-			
-			e.preventDefault();
-			
-		});
-	}
-	
-	jQuery("a.free").click( function () {
-		deals_displayModal_free();
+        
+        
+	jQuery("a.free").fancybox({        
 	});
-	
-	/* Deals container fit the image width
-	var lebar = jQuery("img.deal-thumbnail").width();
-	jQuery(".daily-deals").css("width", lebar); */
+        
+        (function($){
+            jQuery.fn.extend({
+                center: function () {
+                    return this.each(function() {
+                        jQuery(this).css({
+                             "position" : "fixed",
+                             left: (jQuery(window).width() - jQuery(this).width()) / 2,
+                             top: (jQuery(window).height() - jQuery(this).height()) / 2
+                        });
+                    });
+                }
+            }); 
+        })($);
+
+        jQuery(".updated").center();
+        jQuery(".updated").delay(3000).fadeOut(3000);
+                
 		
 });

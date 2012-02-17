@@ -4,13 +4,13 @@
   Plugin Name: WP Deals
   Plugin URI: http://wpdeals.me/
   Description: WP Deals is a special-for-deals plugin where you can make, post, and share deals all around the people just by downloading this plugin and make your own deals-site with it. WP Deals is one of Tokokoo’s network, so after downloading the plugin, then you can explore your site with the nice and gorgeous themes from WP Deals themes.
-  Version: 1.1
+  Version: 1.1.1
   Author: WP Deals
   Author URI: http://wpdeals.me/
  */
 ini_set('display_errors','On');
 
-define('DEALS_VERSION', '1.1');
+define('DEALS_VERSION', '1.1.1');
 
 // defining here
 define('DEALS_PLUGIN_PATH',     plugin_dir_path(__FILE__));
@@ -31,10 +31,10 @@ define('DEALS_PAYMENT_DIR',     DEALS_PLUGIN_PATH   . 'deals-payments/');
 define('DEALS_LOG_DIR',         DEALS_PLUGIN_PATH   . 'deals-assets/logs/');
 define('DEALS_VENDOR_DIR',      DEALS_PLUGIN_PATH   . 'deals-assets/vendors/');
 define('DEALS_LIB_DIR',         DEALS_PLUGIN_PATH   . 'deals-assets/libs/');
-define('DEALS_ENABLE_LOG',      true);
+define('DEALS_ENABLE_LOG',      false);
 
 // load class
-require_once DEALS_LIB_DIR.'class.deals.error.php';
+require_once DEALS_CLASSES.'class-deals-error.php';
 
 global $deals_error;
 $deals_error    = new Deals_Error();
@@ -43,8 +43,8 @@ require_once 'deals_functions.php';
 require_once 'deals-admin/admin-functions.php';
 
 // load file
-if(is_admin()):    
-    require_once 'deals-admin/admin-init.php';
+if(is_admin()):
+    require_once 'deals-admin/admin-init.php';    
 else:
     require_once 'deals_templates.php';
     require_once 'deals_templates_actions.php';
@@ -55,7 +55,6 @@ endif;
 require_once 'deals_init.php';
 require_once 'deals-payments/class-payments.php';
 require_once 'deals-widgets/widgets-init.php';
-
 
 
 /**
@@ -106,7 +105,7 @@ if (!function_exists('is_deal_tag')) {
 if (!function_exists('is_deal')) {
 
     function is_deal() {
-        return is_singular(array('daily-deals'));
+        return is_singular('daily-deals');
     }
 
 }
@@ -207,14 +206,6 @@ function get_deals_currency_symbol() {
 	$currency = deals_get_option('currency');
 	$currency_symbol = '';
 	switch ($currency) :
-		case 'AUD' :
-		case 'BRL' :
-		case 'CAD' :
-		case 'MXN' :
-		case 'NZD' :
-		case 'HKD' :
-		case 'SGD' :
-		case 'USD' : $currency_symbol = '&#36;'; break;
 		case 'EUR' : $currency_symbol = '&euro;'; break;
 		case 'JPY' : $currency_symbol = '&yen;'; break;
 		case 'TRY' : $currency_symbol = 'TL'; break;
@@ -232,8 +223,21 @@ function get_deals_currency_symbol() {
 		case 'TWD' :
 		case 'THB' : $currency_symbol = $currency; break;
 		
-		case 'GBP' : 
-		default    : $currency_symbol = '&pound;'; break;
+		case 'GBP' : $currency_symbol = '&pound;'; break;
+		
+		case 'IDR' : $currency_symbol = 'RP.'; break;
+		
+		case 'INR' : $currency_symbol = 'Rupee'; break;
+		
+		case 'AUD' :
+		case 'BRL' :
+		case 'CAD' :
+		case 'MXN' :
+		case 'NZD' :
+		case 'HKD' :
+		case 'SGD' :
+		case 'USD' : 
+		default    : $currency_symbol = '&#36;'; break;
 	endswitch;
 	return apply_filters('deals_currency_symbol', $currency_symbol, $currency);
 }

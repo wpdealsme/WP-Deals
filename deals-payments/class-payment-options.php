@@ -8,17 +8,7 @@ class Payment_Options {
     private $_payment_handlers = array();
     
     public function register_hook_options() {
-        
-        require_once 'default/class-payment-paypal.php';        
-        $payment_default = new Payment_Default();
-        
-        $avai_payments = array();
-        $avai_payments = array(
-            $payment_default->id => array(
-                'name' => $payment_default->name,
-                'path' => $payment_default->get_path()
-            )
-        );
+                
         $payments = apply_filters('deals_payment_methods',$avai_payments);
         
         /*
@@ -42,14 +32,7 @@ class Payment_Options {
             //rebuild database
             update_option('deals_payments_used',$rebuild_used_payments);            
             
-        }
-        
-        /*
-         if empty, then using default payment
-         */
-        if(empty($payments)) {
-            $payments = $avai_payments;
-        }                
+        }                        
         
         $options['payment_gateways'] = apply_filters('deals_payment_gateways', array(
 		
@@ -266,12 +249,7 @@ class Payment_Options {
             $payment_class_name = ucwords(str_replace('_',' ',strtolower($id)));
             $payment_class_name = str_replace(' ','_',$payment_class_name);
             
-            $filename = basename($filepath);
-            if($filename == 'class-payment-paypal.php') {
-                $class_name = 'Payment_Default';    
-            }else{
-                $class_name = 'Payment_'.$payment_class_name;
-            }
+            $class_name = 'Payment_'.$payment_class_name;
             
             if(class_exists($class_name)) {
                 

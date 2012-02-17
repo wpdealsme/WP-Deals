@@ -17,7 +17,7 @@ function deals_admin_init() {
 	require_once 'admin-import.php';
 	require_once 'admin-stats.php';
 	require_once 'admin-subscribers.php';
-        require_once 'post-type/deals-posts-init.php';	
+    require_once 'post-type/deals-posts-init.php';	
 }
 add_action('admin_init', 'deals_admin_init');
 

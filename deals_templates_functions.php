@@ -219,10 +219,11 @@ if (!function_exists('deals_table_price')) {
  */
 if (!function_exists('deals_loop_description')) {
         function deals_loop_description(){
-        ?>
-                <div class="deal-description"><?php the_excerpt(); ?></div>
-        <?php
-        }
+            
+            $num_word   = apply_filters('deals_length_excerpt', 20); ?>
+            <div class="deal-description"><p><?php echo wp_trim_words(get_the_excerpt(), $num_word); ?></p></div>
+                    
+        <?php }
 }
 
 
